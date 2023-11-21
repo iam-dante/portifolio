@@ -1,4 +1,4 @@
-"use client";
+
 
 import Head from "next/head";
 import React from "react";
@@ -82,7 +82,7 @@ const Home = (): JSX.Element => {
 
         <div className="h-screen  ">
           <div className="h-[10%] flex items-center dark:bg-black   px-4 md:px-16 justify-end drop-shadow-sm">
-            {/* <ThemeSwitch /> */}
+            <ThemeSwitch />
           </div>
 
           {/* main body*/}

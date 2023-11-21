@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,8 +15,13 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    fontFamily: {
+      //sans: ["Poppins", "sans-serif"],
+      sans: ["DM Sans", "sans-serif"],
+      jet: ["JetBrains Mono", "sans-serif"],
+    },
   },
-  darkMode: 'media',
+  
   plugins: [],
 }
 export default config
