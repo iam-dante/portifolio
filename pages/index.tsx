@@ -1,6 +1,7 @@
-import Head from "next/head";
-import Image from "next/image";
+"use client";
 
+import Head from "next/head";
+import React from "react";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { Tab } from "@headlessui/react";
@@ -11,6 +12,8 @@ import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
 
 const Home = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
+
+
   function ThemeSwitch() {
     return (
       <Switch
@@ -63,8 +66,8 @@ const Home = (): JSX.Element => {
   }
 
   return (
-    <div className={` ${enabled ? "" : "dark"} `}>
-      <div className="h-auto">
+    <div className={` ${enabled ? "" : "dark"}`}>
+      <div className="h-auto bg-white">
         <Head>
           <title>Hellow, Brian Here 👋 </title>
           <meta
@@ -79,13 +82,13 @@ const Home = (): JSX.Element => {
 
         <div className="h-screen  ">
           <div className="h-[10%] flex items-center dark:bg-black   px-4 md:px-16 justify-end drop-shadow-sm">
-            <ThemeSwitch />
+            {/* <ThemeSwitch /> */}
           </div>
 
           {/* main body*/}
 
-          <div className="min-h-full px-6 xl:px-24 dark:bg-black">
-            <div className="py-6 flex justify-center">
+          <div className="min-h-full px-6 xl:px-24 dark:bg-black bg-white">
+            <div className="py-6 flex justify-center bg-white dark:bg-black">
               <div>
                 <div className="flex flex-col items-center">
                   <h1 className="font-semibold text-3xl xl:text-7xl uppercase dark:text-white">
