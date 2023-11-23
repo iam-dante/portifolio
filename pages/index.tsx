@@ -8,7 +8,7 @@ import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
 
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
-// import Projects from "./projects";
+import Projects from "./projects";
 
 const Home = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
@@ -298,10 +298,10 @@ const Home = (): JSX.Element => {
                     </div>
                   </Tab.Panel>
 
-                  <Tab.Panel>
-                    {/* <Projects/> */}
+                  <Tab.Panel className="xl:px-56 md:px-12">
+                    <Projects/>
 
-                    <div className="h-screen flex justify-center items-center">
+                    {/* <div className="h-screen flex justify-center items-center">
                       <div className="flex flec-col space-x-2 py-2 px-6 bg-red-200 rounded-md">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -322,7 +322,7 @@ const Home = (): JSX.Element => {
                           Page Under Construction
                         </h1>
                       </div>
-                    </div>
+                    </div> */}
                   </Tab.Panel>
 
                   <Tab.Panel>
