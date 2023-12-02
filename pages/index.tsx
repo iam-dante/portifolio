@@ -1,18 +1,16 @@
-
-
 import Head from "next/head";
 import React from "react";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
+import Script from "next/script";
 
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
 import Projects from "./projects";
 
 const Home = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
-
 
   function ThemeSwitch() {
     return (
@@ -79,6 +77,19 @@ const Home = (): JSX.Element => {
             content="Author: Brian Temu, Personal Website"
           ></meta>
         </Head>
+
+        <Script src="https://www.googletagmanager.com/gtag/js?id=GTM-MQ6677JX" />
+        <Script id="google-analytics">
+          {`
+         
+          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-MQ6677JX');</script>
+          
+        `}
+        </Script>
 
         <div className="h-screen  ">
           <div className="h-[10%] flex items-center dark:bg-black   px-4 md:px-16 justify-end drop-shadow-sm">
@@ -299,7 +310,7 @@ const Home = (): JSX.Element => {
                   </Tab.Panel>
 
                   <Tab.Panel className="xl:px-56 md:px-12">
-                    <Projects/>
+                    <Projects />
 
                     {/* <div className="h-screen flex justify-center items-center">
                       <div className="flex flec-col space-x-2 py-2 px-6 bg-red-200 rounded-md">
