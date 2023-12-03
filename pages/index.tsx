@@ -4,11 +4,10 @@ import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
-import Script from "next/script";
 import GoogleAnalytics from "./GoogleAnalytics";
 
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
-import Projects from "./projects";
+import Projects from "./aboutMe";
 
 const Home = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
@@ -77,12 +76,12 @@ const Home = (): JSX.Element => {
             name="description"
             content="Author: Brian Temu, Personal Website"
           ></meta>
-        </Head>
-
-        
           {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
             <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
           ) : null}
+        </Head>
+
+        
 
           <div className="h-screen  ">
             <div className="h-[10%] flex items-center dark:bg-black   px-4 md:px-16 justify-end drop-shadow-sm">
