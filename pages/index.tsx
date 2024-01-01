@@ -187,7 +187,7 @@ const Home = (): JSX.Element => {
                           <div className="flex p-4 justify-end">
                             <a
                               target="blank"
-                              href="https://github.com/iam-dante/Spot-Mask-Challenge"
+                              href="https://docs.iam-brian.dev/spot-the-mask/intro"
                               className="uppercase border-2 border-black dark:border-white dark:text-white px-2  rounded-full"
                             >
                               Read More
