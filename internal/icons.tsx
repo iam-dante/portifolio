@@ -39,7 +39,7 @@ export const TwitterIcon = () => {
 export const LinkedInIcon = () => {
   return (
     <a
-      href="https://www.linkedin.com/in/brian-gasper-8644541a5/"
+      href="https://www.linkedin.com/in/brian-temu/"
       target="_blank"
       rel="noreferrer"
     >
