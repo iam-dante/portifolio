@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
-import GoogleAnalytics from "./GoogleAnalytics";
 
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
 import Projects from "./aboutMe";
