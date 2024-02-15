@@ -75,9 +75,6 @@ const Home = (): JSX.Element => {
             name="description"
             content="Author: Brian Temu, Personal Website"
           ></meta>
-          {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
-            <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
-          ) : null}
         </Head>
 
         <div className="h-screen  ">
