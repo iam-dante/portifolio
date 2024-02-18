@@ -127,7 +127,7 @@ const Home = (): JSX.Element => {
                   </Link>
                 </li>
                 <li>
-                <Link href="/about">
+                <Link href="/aboutme">
                   <div
                         className={
                           pathname == "/aboutme"
