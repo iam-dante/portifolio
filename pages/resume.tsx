@@ -125,10 +125,10 @@ const Resume = (): JSX.Element => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/aboutme">
+                  <Link href="/aboutMe">
                     <div
                       className={
-                        pathname == "/aboutme"
+                        pathname == "/aboutMe"
                           ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
                           : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
                       }

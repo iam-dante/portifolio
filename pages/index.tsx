@@ -2,19 +2,14 @@ import Head from "next/head";
 import React from "react";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import { Tab } from "@headlessui/react";
-import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
-import next from "next";
 
 const Home = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
-
-  var url = useRouter()
   const pathname = usePathname()
 
   function ThemeSwitch() {
@@ -83,7 +78,7 @@ const Home = (): JSX.Element => {
           ></meta>
         </Head>
 
-        <div className="h-screen  ">
+        <div className="h-screen">
           <div className="h-[10%] flex items-center dark:bg-black   px-4 md:px-16 justify-end drop-shadow-sm">
             <ThemeSwitch />
           </div>
@@ -127,10 +122,10 @@ const Home = (): JSX.Element => {
                   </Link>
                 </li>
                 <li>
-                <Link href="/aboutme">
+                <Link href="/aboutMe">
                   <div
                         className={
-                          pathname == "/aboutme"
+                          pathname == "/aboutMe"
                             ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
                             : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
                         }
