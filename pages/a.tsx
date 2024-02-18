@@ -4,18 +4,11 @@ import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { usePathname } from "next/navigation";
 
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
-import next from "next";
 
 const Home = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
-
-  var url = useRouter()
-  const pathname = usePathname()
 
   function ThemeSwitch() {
     return (
@@ -110,52 +103,51 @@ const Home = (): JSX.Element => {
             </div>
 
             <div className="mt-6">
-
-              <ul className=" space-x-4 xl:space-x-8 items-center justify-center flex">
-                <li>
-                
-                  <Link href="/">
-                  <div
+              <Tab.Group>
+                <Tab.List className=" space-x-4 xl:space-x-8 items-center justify-center flex">
+                  <Tab as={Fragment}>
+                    {({ selected }) => (
+                      <button
                         className={
-                          pathname =="/"
+                          selected
                             ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
                             : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
                         }
                       >
                         <h1 className="text-sm text md:text-base">Projects</h1>
-                      </div>
-                  </Link>
-                </li>
-                <li>
-                <Link href="/about">
-                  <div
+                      </button>
+                    )}
+                  </Tab>
+                  <Tab as={Fragment}>
+                    {({ selected }) => (
+                      <button
                         className={
-                          pathname == "/aboutme"
+                          selected
                             ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
-                            : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
+                            : "border-b-2 border-black text-black px-4 md:px-8 py-4 dark:text-white dark:border-white"
                         }
                       >
                         <h1 className="text-sm text md:text-base">About Me</h1>
-                      </div>
-                  </Link>
-                </li>
-                <li>
-                <Link href="/resume">
-                  <div
+                      </button>
+                    )}
+                  </Tab>
+                  <Tab as={Fragment}>
+                    {({ selected }) => (
+                      <button
                         className={
-                          pathname == "/resume"
-                            ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
-                            : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
+                          selected
+                            ? "bg-black text-white px-4 py-4 dark:text-black dark:bg-white"
+                            : "border-b-2 border-black text-black px-4 py-4 dark:text-white dark:border-white"
                         }
                       >
                         <h1 className="text-sm text md:text-base">Resume</h1>
-                      </div>
-                  </Link>
-                </li>
-              </ul>
-
-
-              <div className="grid  md:grid-cols-2 xl:grid-cols-3 xl:px-24 gap-10 mt-12">
+                      </button>
+                    )}
+                  </Tab>
+                </Tab.List>
+                <Tab.Panels className="py-12">
+                  <Tab.Panel>
+                    <div className="grid  md:grid-cols-2 xl:grid-cols-3 xl:px-24 gap-10">
                       <div>
                         <div className="border-2 border-black rounded-md hover:shadow-lg dark:border-white min-h-0">
                           <div className="h-40 bg-green-600"></div>
@@ -338,8 +330,45 @@ const Home = (): JSX.Element => {
                         </div>
                       </div>
                     </div>
+                  </Tab.Panel>
 
-              
+                  <Tab.Panel className="xl:px-56 md:px-12">
+                    {/* <Projects /> */}
+
+                    {/* <div className="h-screen flex justify-center items-center">
+                      <div className="flex flec-col space-x-2 py-2 px-6 bg-red-200 rounded-md">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-6 text-red-700"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                          />
+                        </svg>
+
+                        <h1 className="text-red-700">
+                          Page Under Construction
+                        </h1>
+                      </div>
+                    </div> */}
+                  </Tab.Panel>
+
+                  <Tab.Panel>
+                    <div className="flex items-center justify-center pb-12">
+                      <iframe
+                        src="/document/Resume_Brian_Temu.pdf"
+                        className=" w-5/6 xl:w-3/4 h-screen xl:h-[1160px]"
+                      />
+                    </div>
+                  </Tab.Panel>
+                </Tab.Panels>
+              </Tab.Group>
             </div>
           </div>
         </div>
