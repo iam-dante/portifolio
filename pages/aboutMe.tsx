@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
 import next from "next";
 
-const About = (): JSX.Element => {
+const AboutMe = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
 
   var url = useRouter();
@@ -197,4 +197,4 @@ const About = (): JSX.Element => {
   );
 };
 
-export default About;
+export default AboutMe;
