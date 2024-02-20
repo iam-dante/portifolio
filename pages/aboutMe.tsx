@@ -2,14 +2,11 @@ import Head from "next/head";
 import React from "react";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import { Tab } from "@headlessui/react";
-import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
-import next from "next";
 
 const Aboutme = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
@@ -152,40 +149,72 @@ const Aboutme = (): JSX.Element => {
                 </li>
               </ul>
 
-              <div className="xl:px-56 md:px-12 mt-12">
-                <div className="xl:px-48">
-                  <div className="h-24 flex bg-sky-600 svg"></div>
-
-                  <div className="py-2 space-y-2 font-normal text-lg xl:text-xl dark:text-white text-black">
-                    <p>
-                      Hi, {"I'm"} Brian Temu a software engineer with a passion
-                      for data science. I am a graduated student majoring in
-                      Data Science at University of Maryland Baltimore County
-                      and am now looking to break into the field of data
-                      engineering, analyst or scientist. I have experience
-                      working with big data, machine and deep learning projects
-                      and have developed a strong foundation in programming
-                      languages such as Python, R, JavaScript, and SQL.
-                    </p>
-                    <p>
-                      One of my recent projects involved developing was a deep
-                      learning competition of spoting the mask challenge that
-                      used deep learning. And another was an analysis on Open
-                      Baltimore Police Department Crime data to investigate the
-                      changes of total crimes incidents.
-                      {" I'm"} excited to see where my career in data science
-                      takes me and am always looking for new opportunities to
-                      learn and grow my technical skills.
-                    </p>
-                    <p>
-                      My interests extend to the world of chess, where I
-                      continually enhance my strategic thinking and
-                      problem-solving abilities. My diverse skill set empowers
-                      me to tackle a wide range of data-related challenges,
-                      create meaningful solutions, and explore the intriguing
-                      realm of deep learning. My unwavering support for
-                      Manchester City has been a lifelong support.
-                    </p>
+            
+              <div className="w-full">
+                <div className="xl:mx-96 mx-0 md:mx-32 mt-6">
+                  {/* <div className="hidden md:blockh-36 svg relative"></div> */}
+                  <div className="mt-12 flex flex-col md:flex-row  md:space-x-3">
+                    <img src="/me.jpeg" className="h-52 w-52 " />
+                    <div className="space-y-2 mt-4 md:mt-0">
+                      <h1 className="text-3xl font-semibold">Me</h1>
+                      <div className="space-y-2 text-justify pb-8">
+                        <p>
+                          As a dedicated software engineer with a strong
+                          background in software development and a deep passion
+                          for data science. With a proven track record of
+                          designing and implementing cutting-edge software
+                          solutions, I have successfully contributed to a
+                          variety of projects, demonstrating my ability to
+                          tackle complex challenges and deliver high-quality
+                          results.
+                        </p>
+                        <p>
+                          As a continuous learner and an enthusiast for Machine
+                          Learning System and Large Language Models I am eager to learn and grow my skills,
+                          Currently pursuing a {"Master's"} degree in Data
+                          Science. This academic pursuit allows me to develop
+                          deeper into the world of data analysis, machine
+                          learning, and artificial intelligence. Gained
+                          proficiency in tools and technologies like Pytorch,
+                          Python, SQL, TensorFlow that I work with day to day.
+                        </p>
+                        <p>
+                          My interests extend to the world of chess, where I
+                          continually enhance my strategic thinking and
+                          problem-solving abilities. In sport perceptive I have
+                          unwavering support to Manchester City F.C and the
+                          incredible coaching by Pep Guardiola. People that I
+                          look up to interms of career and skill growth are{" "}
+                          <a
+                            href="https://www.linkedin.com/in/kevin-masoy/"
+                            className="text-blue-800 underline"
+                          >
+                            Kevin James
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.linkedin.com/in/andrej-karpathy-9a650716/"
+                            className="text-blue-800 underline"
+                          >
+                            Andrew Kaparthy
+                          </a>
+                          , and{" "}
+                          <a
+                            href="https://twitter.com/ThePrimeagen?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                            className="text-blue-800 underline"
+                          >
+                            The Primagen.
+                          </a>
+                        </p>
+                        <p>
+                          Overall I am excited on the opportunities that lies ahead
+                          and look forward to applying my comprehensive skills
+                          set to make meaningful contributions in the
+                          field of data science, and my passion
+                          for innovation in this new era of machines.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
