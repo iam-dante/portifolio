@@ -151,13 +151,13 @@ const Aboutme = (): JSX.Element => {
 
             
               <div className="w-full">
-                <div className="xl:mx-96 mx-0 md:mx-32 mt-6">
+                <div className="xl:mx-[20%] mx-0 md:mx-[10%] mt-6">
                   {/* <div className="hidden md:blockh-36 svg relative"></div> */}
                   <div className="mt-12 flex flex-col md:flex-row  md:space-x-3">
                     <img src="/me.jpeg" className="h-52 w-52 " />
                     <div className="space-y-2 mt-4 md:mt-0">
                       <h1 className="text-3xl font-semibold">Me</h1>
-                      <div className="space-y-2 text-justify pb-8">
+                      <div className="space-y-2 text-justify pb-8 dark:text-white text-black">
                         <p>
                           As a dedicated software engineer with a strong
                           background in software development and a deep passion
@@ -187,21 +187,21 @@ const Aboutme = (): JSX.Element => {
                           look up to interms of career and skill growth are{" "}
                           <a
                             href="https://www.linkedin.com/in/kevin-masoy/"
-                            className="text-blue-800 underline"
+                            className="text-blue-800 underline dark:text-sky-400"
                           >
                             Kevin James
                           </a>
                           ,{" "}
                           <a
                             href="https://www.linkedin.com/in/andrej-karpathy-9a650716/"
-                            className="text-blue-800 underline"
+                            className="text-blue-800 underline dark:text-sky-400"
                           >
                             Andrew Kaparthy
                           </a>
                           , and{" "}
                           <a
                             href="https://twitter.com/ThePrimeagen?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                            className="text-blue-800 underline"
+                            className="text-blue-800 underline dark:text-sky-400"
                           >
                             The Primagen.
                           </a>
