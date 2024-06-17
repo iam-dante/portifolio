@@ -2,8 +2,6 @@ import Head from "next/head";
 import React from "react";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import { Tab } from "@headlessui/react";
-import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
