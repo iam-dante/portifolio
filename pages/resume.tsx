@@ -152,7 +152,7 @@ const Resume = (): JSX.Element => {
               <div>
                 <div className="flex items-center justify-center pb-12 mt-12">
                   <iframe
-                    src="/document/Brian_Temu_Resume__.pdf"
+                    src="/document/Brian_Temu_Resume.pdf"
                     className=" w-5/6 xl:w-3/4 h-screen xl:h-[1160px]"
                   />
                 </div>
