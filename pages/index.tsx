@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { ProjectCards } from "@/components/ProjectCards";
 
 const Home = (): JSX.Element => {
   const [enabled, setEnabled] = useState(true);
@@ -116,6 +115,9 @@ const Home = (): JSX.Element => {
           </div>
         </nav>
 
+        {/* Glowing Circle */}
+        {/* <div className="fixed top-60 right-8 w-24 h-24 rounded-full bg-purple-500/90 blur-2xl group-hover:bg-purple-500/30 transition-all duration-70 pointer-events-none"></div> */}
+
         <main className="relative px-4 sm:px-6 xl:px-24 font-sans overflow-hidden group">
           {/* Combined Hero & About Section */}
           <section className="md:min-h-screen flex md:items-center md:justify-center pt-12 sm:py-20">
@@ -178,6 +180,7 @@ const Home = (): JSX.Element => {
               </div>
             </div>
           </section>
+
           {/* Projects Section */}
           <section id="projects" className="py-20 sm:py-24">
             <div className="max-w-6xl mx-auto">
