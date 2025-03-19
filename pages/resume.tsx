@@ -1,6 +1,5 @@
 import Head from "next/head";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Switch } from "@headlessui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -66,100 +65,39 @@ const Resume = (): JSX.Element => {
   }
 
   return (
-    <div className={` ${enabled ? "" : "dark"}`}>
-      <div className="h-auto bg-white">
+    <div className={`${enabled ? "" : "dark"}`}>
+      <div className="min-h-screen bg-white dark:bg-black">
         <Head>
-          <title>Hellow, Brian Here 👋 </title>
+          <title>Resume | Brian Temu</title>
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
-          <meta
-            name="description"
-            content="Author: Brian Temu, Personal Website"
-          ></meta>
+          <meta name="description" content="Brian Temu's Resume" />
         </Head>
 
-        <div className="h-screen  ">
-          <div className="h-[10%] flex items-center dark:bg-black   px-4 md:px-16 justify-end drop-shadow-sm">
+        <nav className="fixed w-full bg-white/80 dark:bg-black/80 backdrop-blur-sm z-50">
+          <div className="flex items-center justify-between px-6 py-4 md:px-16">
+            <Link
+              href="/"
+              className="font-bold text-xl dark:text-white hover:opacity-80"
+            >
+              Brian Temu
+            </Link>
             <ThemeSwitch />
           </div>
+        </nav>
 
-          {/* main body*/}
-
-          <div className="min-h-full px-6 xl:px-24 dark:bg-black bg-white">
-            <div className="py-6 flex justify-center bg-white dark:bg-black">
-              <div>
-                <div className="flex flex-col items-center">
-                  <h1 className="font-semibold text-3xl xl:text-7xl uppercase dark:text-white">
-                    Brian Temu
-                  </h1>
-                  <h1 className="dark:text-white">
-                    Data Science Major & Software Engineer
-                  </h1>
-                </div>
-                <div className="h-12 flex space-x-8 items-center px-12 justify-center dark:text-white">
-                  <GithubICon />
-                  <LinkedInIcon />
-                  <TwitterIcon />
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <ul className=" space-x-4 xl:space-x-8 items-center justify-center flex">
-                <li>
-                  <Link href="/">
-                    <div
-                      className={
-                        pathname == "/"
-                          ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
-                          : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
-                      }
-                    >
-                      <h1 className="text-sm text md:text-base">Projects</h1>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/aboutMe">
-                    <div
-                      className={
-                        pathname == "/aboutMe"
-                          ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
-                          : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
-                      }
-                    >
-                      <h1 className="text-sm text md:text-base">About Me</h1>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/resume">
-                    <div
-                      className={
-                        pathname == "/resume"
-                          ? "bg-black text-white px-4 md:px-8 py-4 dark:text-black dark:bg-white"
-                          : " border-b-2 border-black text-black px-4  md:px-8 py-4 dark:text-white dark:border-white"
-                      }
-                    >
-                      <h1 className="text-sm text md:text-base">Resume</h1>
-                    </div>
-                  </Link>
-                </li>
-              </ul>
-
-              <div>
-                <div className="flex items-center justify-center pb-12 mt-12">
-                  <iframe
-                    src="/document/Brian_Temu_Resume.pdf"
-                    className=" w-5/6 xl:w-3/4 h-screen xl:h-[1160px]"
-                  />
-                </div>
-              </div>
+        <main className="container mx-auto px-6 pt-24 pb-12">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8">
+              <iframe
+                src="/document/Brian_Temu_Resume.pdf"
+                className="w-full h-[85vh] rounded-lg"
+              />
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );
