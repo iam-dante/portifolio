@@ -105,8 +105,9 @@ const Home = (): JSX.Element => {
                 Projects
               </button>
               <Link
-                href="/resume"
+                href="https://drive.google.com/file/d/13h8LFWNFP7BFQo8L6_f8v4PWh5JJ8GxC/view?usp=sharing"
                 className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
+                target="_blank"
               >
                 Resume
               </Link>
