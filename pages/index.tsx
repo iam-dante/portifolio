@@ -190,7 +190,7 @@ const Home = (): JSX.Element => {
               </h2>
               <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                 {/* Cinerecall Project */}
-                <div className="group relative dark:from-gray-800 dark:to-gray-900 rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Color Block */}
                   <div className="w-full h-12 bg-yellow-800"></div>
@@ -235,7 +235,7 @@ const Home = (): JSX.Element => {
                 </div>
 
                 {/* Vision Transformer Project */}
-                <div className="group relative dark:from-gray-800 dark:to-gray-900 rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                <div className="group relative  rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Color Block */}
                   <div className="w-full h-12 bg-green-800"></div>
@@ -279,7 +279,7 @@ const Home = (): JSX.Element => {
                 </div>
 
                 {/* Baltimore Crime Analysis Project */}
-                <div className="group relative dark:from-gray-800 dark:to-gray-900 rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Color Block */}
                   <div className="w-full h-12 bg-sky-800"></div>
@@ -319,7 +319,7 @@ const Home = (): JSX.Element => {
                 </div>
 
                 {/* Face Mask Detection Project */}
-                <div className="group relative dark:from-gray-800 dark:to-gray-900 rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                <div className="group relative  rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Color Block */}
                   <div className="w-full h-12 bg-orange-800"></div>
@@ -361,19 +361,19 @@ const Home = (): JSX.Element => {
                 </div>
 
                 {/* Spot the Mask Project */}
-                <div className="group relative dark:from-gray-800 dark:to-gray-900 rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Color Block */}
-                  <div className="w-full h-12 bg-gray-800"></div>
+                  <div className="w-full h-12 bg-purple-800"></div>
                   <div className="p-8 relative z-10">
                     <h3 className="text-xl sm:text-2xl font-bold mb-4 dark:text-white">
                       Spot the Mask Challenge
                     </h3>
                     <div className="flex items-center gap-4 mb-6">
-                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-900/50 dark:text-gray-300">
+                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300">
                         Deep Learning
                       </span>
-                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-gray-800 dark:bg-gray-900/50 dark:text-gray-300 border-2 border-gray-800">
+                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-purple-800 dark:bg-purple-900/50 dark:text-purple-300 border-2 border-purple-800">
                         June 2021
                       </span>
                     </div>
@@ -386,7 +386,7 @@ const Home = (): JSX.Element => {
                         href="https://zindi.africa/competitions/spot-the-mask"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline text-gray-700"
+                        className="underline text-purple-700"
                       >
                         zindi
                       </a>{" "}
