@@ -209,7 +209,7 @@ const Home = (): JSX.Element => {
 
                     <p className="text-sm sm:text-base text-black dark:text-white">
                       <a
-                        href="https://cinerecall.iam-brian.dev/"
+                        href="https://cinerecall.briantemu.dev/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline text-yellow-600"
