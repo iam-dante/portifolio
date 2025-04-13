@@ -57,12 +57,19 @@ const Home = (): JSX.Element => {
         <Head>
           <title>Brian Temu | Software & ML Engineer</title>
           <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
+            name="description"
+            content="Brian Temu | Personal Portifolio "
           />
           <meta
-            name="description"
-            content="Brian Temu - Data Scientist & Software Engineer Portfolio"
+            name="keywords"
+            content="Brian Temu, Software Engineer, Machine Learning Engineer & Data Scientist "
+          />
+          <meta name="author" content="Brian Temu" />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://briantemu.dev/" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
           />
         </Head>
 
@@ -209,7 +216,7 @@ const Home = (): JSX.Element => {
 
                     <p className="text-sm sm:text-base text-black dark:text-white">
                       <a
-                        href="https://cinerecall.iam-brian.dev/"
+                        href="https://cinerecall.briantemu.dev/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline text-yellow-600"
