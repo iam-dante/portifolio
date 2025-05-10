@@ -57,12 +57,19 @@ const Home = (): JSX.Element => {
         <Head>
           <title>Brian Temu | Software & ML Engineer</title>
           <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
+            name="description"
+            content="Brian Temu | Personal Portifolio "
           />
           <meta
-            name="description"
-            content="Brian Temu - Data Scientist & Software Engineer Portfolio"
+            name="keywords"
+            content="Brian Temu, Software Engineer, Machine Learning Engineer & Data Scientist "
+          />
+          <meta name="author" content="Brian Temu" />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://briantemu.dev/" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
           />
         </Head>
 
@@ -232,6 +239,17 @@ const Home = (): JSX.Element => {
                       only partial information is available.`}
                     </p>
                   </div>
+                  <div className="h-full px-6 realative">
+                    <Link
+                      href={"https://cinerecall.briantemu.dev/"}
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Vision Transformer Project */}
@@ -276,6 +294,19 @@ const Home = (): JSX.Element => {
                       innovative methodology and experimental results.
                     </p>
                   </div>
+                  <div className="h-full px-6 realative py-4">
+                    <Link
+                      href={
+                        "https://docs.briantemu.dev/docs/category/vision-transfromer-paper-vit"
+                      }
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Baltimore Crime Analysis Project */}
@@ -315,6 +346,19 @@ const Home = (): JSX.Element => {
                       informed decision-making, and ultimately promote safer and
                       more secure neighborhoods in Baltimore.
                     </p>
+                  </div>
+                  <div className="h-full px-6 realative py-4">
+                    <Link
+                      href={
+                        "https://github.com/iam-dante/Open-Baltimore-Analysis"
+                      }
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
                   </div>
                 </div>
 
@@ -358,6 +402,19 @@ const Home = (): JSX.Element => {
                       minimizing the spread of infectious diseases.
                     </p>
                   </div>
+                  <div className="h-full px-6 realative py-4">
+                    <Link
+                      href={
+                        "https://github.com/iam-dante/YoloV5-Facemask-Detection"
+                      }
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Spot the Mask Project */}
@@ -396,6 +453,19 @@ const Home = (): JSX.Element => {
                       masks. It represents a significant and innovative
                       challenge within the machine learning community.
                     </p>
+                  </div>
+                  <div className="h-full px-6 realative py-4">
+                    <Link
+                      href={
+                        "https://docs.briantemu.dev/docs/category/spot-the-mask"
+                      }
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
                   </div>
                 </div>
               </div>
