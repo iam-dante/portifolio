@@ -19,7 +19,8 @@ const config: Config = {
     },
     fontFamily: {
       //sans: ["Poppins", "sans-serif"],
-      sans: ["DM Sans", "sans-serif"],
+      // sans: ["DM Sans", "sans-serif"],
+      sans: ["Montserrat", "sans-serif"],
       jet: ["JetBrains Mono", "sans-serif"],
       poppins: ["Poppins", "sans-serif"],
     },
