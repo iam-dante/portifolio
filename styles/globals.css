@@ -21,3 +21,54 @@ html {
   color: transparent;
 }
 
+/* Custom styles for code blocks */
+pre {
+  @apply rounded-lg p-4 bg-gray-800 overflow-x-auto text-sm mb-6;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbar for code blocks */
+pre::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+pre::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-full;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Style markdown table */
+table {
+  @apply w-full border-collapse my-6;
+}
+
+table th {
+  @apply bg-gray-800 text-white p-2 text-left border border-gray-700;
+}
+
+table td {
+  @apply p-2 border border-gray-700;
+}
+
+/* Links within prose content */
+.prose a {
+  @apply text-blue-400 hover:text-blue-300 transition-colors no-underline;
+}
+
+/* Focus styles for accessibility */
+a:focus, button:focus {
+  @apply outline-none ring-2 ring-blue-400 ring-opacity-50;
+}
+
+

@@ -1,12 +1,17 @@
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/, // Matches both .md and .mdx files
-});
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
 };
 
+const withMDX = require("@next/mdx")({
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    providerImportSource: "@mdx-js/react",
+  },
+});
+
 module.exports = withMDX({
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"], // Allow MD/MDX pages
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
 });
