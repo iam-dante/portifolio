@@ -1,4 +1,3 @@
-// /pages/blog.js - Updated version of your existing file
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
@@ -6,7 +5,14 @@ import matter from "gray-matter";
 import BlogLayout from "../components/BlogLayout";
 
 export async function getStaticProps() {
-  const postsDirectory = path.join(process.cwd(), "/pages/posts");
+  // Use a content directory instead of pages directory for markdown files
+  const postsDirectory = path.join(process.cwd(), "/content/posts");
+
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(postsDirectory)) {
+    fs.mkdirSync(postsDirectory, { recursive: true });
+  }
+
   const filenames = fs.readdirSync(postsDirectory);
 
   const posts = filenames

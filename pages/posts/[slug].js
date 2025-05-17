@@ -1,4 +1,3 @@
-// /pages/posts/[slug].js
 import { useRouter } from "next/router";
 import fs from "fs";
 import path from "path";
@@ -33,7 +32,14 @@ function PostLayout({ children }) {
 
 // Get the paths for all markdown files
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), "/pages/posts");
+  // Look for markdown files in a dedicated content directory, not in pages/posts
+  const postsDirectory = path.join(process.cwd(), "/content/posts");
+
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(postsDirectory)) {
+    fs.mkdirSync(postsDirectory, { recursive: true });
+  }
+
   const filenames = fs.readdirSync(postsDirectory);
 
   const paths = filenames
@@ -53,7 +59,7 @@ export async function getStaticPaths() {
 // Get the content for a specific markdown file
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const filePath = path.join(process.cwd(), "/pages/posts", `${slug}.md`);
+  const filePath = path.join(process.cwd(), "/content/posts", `${slug}.md`);
   const fileContents = fs.readFileSync(filePath, "utf8");
 
   const { data, content } = matter(fileContents);
