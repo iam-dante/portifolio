@@ -24,7 +24,7 @@ const config: Config = {
       jet: ["JetBrains Mono", "sans-serif"],
       poppins: ["Poppins", "sans-serif"],
     },
-    typography: (theme) => ({
+    typography: (theme:any) => ({
       DEFAULT: {
         css: {
           color: theme('colors.gray.300'),
