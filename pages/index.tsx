@@ -196,7 +196,56 @@ const Home = (): JSX.Element => {
                 Featured Projects
               </h2>
               <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-                {/* Cinerecall Project */}
+                {/* Eda Project */}
+
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* Color Block */}
+                  <div className="w-full h-12 bg-orange-700"></div>
+                  <div className="p-8 relative z-10">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-4 dark:text-white">
+                      Eda AI - Learning Assistant
+                    </h3>
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300">
+                        Application
+                      </span>
+                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-ornage-800 dark:bg-orange-900/50 dark:text-orange-300 border-2 border-orange-800">
+                        May 2025
+                      </span>
+                    </div>
+
+                    <p className="text-sm sm:text-base text-black dark:text-white">
+                      <a
+                        href="https://eda.briantemu.dev/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-orange-600"
+                      >
+                        Eda
+                      </a>{" "}
+                      {`is a  project focuses on creating an AI-powered learning 
+                      assistant that uses Retrieval-Augmented Generation (RAG) to automatically 
+                      generate interactive questions from academic documents like research papers, 
+                      textbooks, and lecture notes. The system will process user-uploaded documents, extract key
+                       information using embeddings, retrieve relevant data via ChromaDB, and employ a Large Language Model 
+                       (LLM) to produce context-aware questions and responses. The research aims to evaluate the AI's effectiveness
+                        in enhancing student comprehension.`}
+                    </p>
+                  </div>
+                  <div className="h-full px-6 realative py-5">
+                    <Link
+                      href={"https://eda.briantemu.dev/"}
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+
                 <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Color Block */}
@@ -234,16 +283,14 @@ const Home = (): JSX.Element => {
                       service leverages a large database of films to suggest
                       titles that align with the provided description, making it
                       easier for users to find movies they’ve seen in the past
-                      but have trouble identifying. CineRecall offers a unique
-                      and user-friendly way to reconnect with films, even when
-                      only partial information is available.`}
+                      but have trouble identifying.`}
                     </p>
                   </div>
-                  <div className="h-full px-6 realative">
+                  <div className="h-full px-6 realative py-5">
                     <Link
                       href={"https://cinerecall.briantemu.dev/"}
                       target="_blank"
-                      className=" absolute bottom-4 right-4"
+                      className="absolute bottom-4 right-4"
                     >
                       <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
                         Read More →
@@ -294,7 +341,7 @@ const Home = (): JSX.Element => {
                       innovative methodology and experimental results.
                     </p>
                   </div>
-                  <div className="h-full px-6 realative py-4">
+                  <div className="h-full px-6 realative py-5">
                     <Link
                       href={
                         "https://docs.briantemu.dev/docs/category/vision-transfromer-paper-vit"
@@ -347,7 +394,7 @@ const Home = (): JSX.Element => {
                       more secure neighborhoods in Baltimore.
                     </p>
                   </div>
-                  <div className="h-full px-6 realative py-4">
+                  <div className="h-full px-6 realative py-5">
                     <Link
                       href={
                         "https://github.com/iam-dante/Open-Baltimore-Analysis"
@@ -402,7 +449,7 @@ const Home = (): JSX.Element => {
                       minimizing the spread of infectious diseases.
                     </p>
                   </div>
-                  <div className="h-full px-6 realative py-4">
+                  <div className="h-full px-6 realative py-5">
                     <Link
                       href={
                         "https://github.com/iam-dante/YoloV5-Facemask-Detection"
@@ -454,7 +501,7 @@ const Home = (): JSX.Element => {
                       challenge within the machine learning community.
                     </p>
                   </div>
-                  <div className="h-full px-6 realative py-4">
+                  <div className="h-full px-6 realative py-5">
                     <Link
                       href={
                         "https://docs.briantemu.dev/docs/category/spot-the-mask"
