@@ -4,13 +4,13 @@ import Head from "next/head";
 
 export default function BlogLayout({ children, meta }) {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col font-sans">
       <Head>
         <title>{meta?.title ? `${meta.title} | Blog` : "Blog"}</title>
         <meta name="description" content={meta?.summary || "My blog"} />
       </Head>
 
-      <nav className=" shadow-md">
+      <nav className="">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -26,10 +26,10 @@ export default function BlogLayout({ children, meta }) {
 
       <main className="grow">{children}</main>
 
-      <footer className="bg-gray-800">
+      <footer className="">
         <div className="max-w-6xl mx-auto px-4 py-6">
           <div className="text-center text-gray-400">
-            <p>© {new Date().getFullYear()} Bria Temu. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Brian Temu. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -55,9 +55,9 @@ export async function getStaticProps() {
 export default function Blog({ posts }) {
   return (
     <BlogLayout meta={{ title: "Blog" }}>
-      <div className="bg-gray-900">
+      <div className="">
         <div className="h-48 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-sans font-semibold">Blog</h1>
+          <h1 className="text-black text-4xl font-sans font-semibold">Blog</h1>
         </div>
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,12 +69,12 @@ export default function Blog({ posts }) {
               <h2 className="text-2xl text-white font-semibold mb-3">
                 <Link
                   href={`/posts/${post.slug}`}
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-400 transition-colors text-black"
                 >
                   {post.title}
                 </Link>
               </h2>
-              <p className="text-gray-300 mb-4">{post.summary}</p>
+              <p className="text-gray-900 mb-4">{post.summary}</p>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-400 font-jet">
                   {post.date}
