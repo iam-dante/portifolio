@@ -21,6 +21,7 @@ const config: Config = {
     fontFamily: {
       //sans: ["Poppins", "sans-serif"],
       dsans: ["DM Sans", "sans-serif"],
+      libre: ["Libre Baskerville", "serif"],
       sans: ["Montserrat", "sans-serif"],
       fira: ["Fira Mono", "monospace"],
       jet: ["JetBrains Mono", "sans-serif"],

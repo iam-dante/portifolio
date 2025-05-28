@@ -19,12 +19,98 @@ import "highlight.js/styles/github-dark.css";
 
 // Add TableOfContents component
 const TableOfContents = ({ headings }) => {
+  const [activeId, setActiveId] = useState("");
+
+  // Add click handler for navigation
+  const handleClick = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setActiveId(id);
+      history.pushState(null, null, `#${id}`);
+    }
+  };
+
+  useEffect(() => {
+    const checkHash = () => {
+      const hash = window.location.hash.slice(1);
+      // Handle empty hash case (just "#")
+      if (hash === "") {
+        setActiveId("");
+        window.scrollTo(0, 0);
+        return true;
+      }
+      if (hash && headings.some((h) => h.id === hash)) {
+        setActiveId(hash);
+        return true;
+      }
+      return false;
+    };
+
+    const handleScroll = () => {
+      // Only update based on scroll if no hash is present
+      if (checkHash()) return;
+
+      const scrollPosition = window.scrollY + 80; // Adjusted offset
+      const pageBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100;
+
+      const headingElements = headings
+        .map(({ id }) => {
+          const element = document.getElementById(id);
+          if (element) {
+            return {
+              id,
+              offsetTop: element.offsetTop,
+            };
+          }
+          return null;
+        })
+        .filter(Boolean);
+
+      if (pageBottom) {
+        // If near bottom of page, highlight last heading
+        const lastHeading = headingElements[headingElements.length - 1];
+        setActiveId(lastHeading?.id || "");
+      } else {
+        // Find the current heading
+        const current = headingElements.find((heading, index) => {
+          const nextHeading = headingElements[index + 1];
+          return (
+            heading.offsetTop <= scrollPosition &&
+            (!nextHeading || nextHeading.offsetTop > scrollPosition)
+          );
+        });
+
+        if (current?.id) {
+          setActiveId(current.id);
+          // Update URL hash without scrolling
+          history.replaceState(null, null, `#${current.id}`);
+        }
+      }
+    };
+
+    // Initial checks
+    if (!checkHash()) {
+      handleScroll();
+    }
+
+    window.addEventListener("hashchange", checkHash);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("hashchange", checkHash);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [headings]);
+
   return (
-    <nav className="hidden lg:block sticky top-8 ml-8 min-w-[250px] max-w-[300px] self-start">
+    <nav className="hidden lg:block sticky top-8 ml-8 min-w-[250px] max-w-[300px] self-start font-libre">
       <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-        <h2 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
+        {/* <h2 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
           Table of Contents
-        </h2>
+        </h2> */}
         <ul className="space-y-2 text-sm">
           {headings.map((heading) => (
             <li
@@ -33,7 +119,12 @@ const TableOfContents = ({ headings }) => {
             >
               <a
                 href={`#${heading.id}`}
-                className="text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+                onClick={(e) => handleClick(e, heading.id)}
+                className={`block transition-all duration-200 no-underline outline-none focus:outline-none focus:ring-0 ${
+                  activeId === heading.id
+                    ? "text-slate-600 dark:text-slate-400 font-medium border-l-2 border-slate-600 dark:border-slate-400 pl-2 -ml-2"
+                    : "text-gray-700 dark:text-gray-400 hover:text-slate-900 dark:hover:text-slate-300"
+                }`}
               >
                 {heading.text}
               </a>
@@ -48,20 +139,18 @@ const TableOfContents = ({ headings }) => {
 // Update PostLayout
 function PostLayout({ children, headings }) {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-900 font-libre">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8">
           <Link
             href="/blog"
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-sans"
+            className="text-blue-800 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-sans"
           >
             ← Back to Blog
           </Link>
         </div>
         <div className="flex justify-between">
-          <article className="prose prose-lg dark:prose-invert max-w-3xl">
-            {children}
-          </article>
+          <article className="dark:prose-invert max-w-3xl">{children}</article>
           {headings.length > 0 && <TableOfContents headings={headings} />}
         </div>
       </div>
@@ -154,47 +243,55 @@ export async function getStaticProps({ params }) {
 const MarkdownComponents = {
   h1: (props) => (
     <h1
-      className="text-3xl font-bold text-black mt-8 mb-4 font-fira"
+      className="text-3xl font-bold text-black mt-8 mb-4 font-libre"
       {...props}
     />
   ),
   h2: (props) => (
     <h2
-      className="text-2xl font-bold text-black mt-6 mb-3 pb-2 [&_a]:text-black [&_a]:hover:text-black "
+      className="text-2xl font-bold text-black mt-6 mb-3 pb-2 [&_a]:text-black [&_a]:hover:text-black font-libre "
       {...props}
     />
   ),
   h3: (props) => (
-    <h3 className="text-xl font-bold text-black mt-5 mb-2" {...props} />
+    <h3
+      className="text-xl font-bold text-black mt-5 mb-2 font-libre"
+      {...props}
+    />
   ),
   h4: (props) => (
-    <h4 className="text-lg font-bold text-black mt-4 mb-2" {...props} />
+    <h4
+      className="text-md font-bold text-black mt-4 mb-2 font-libre"
+      {...props}
+    />
   ),
   p: (props) => (
     <p
-      className="text-gray-800 dark:text-gray-200 mb-4 text-lg leading-relaxed font-dsans"
+      className="text-gray-800 dark:text-gray-200 mb-4 text-base leading-relaxed font-libre"
       {...props}
     />
   ),
   a: (props) => (
-    <a
-      className="[&_a]:text-blue-900 dark:text-blue-400  dark:hover:text-blue-300 underline"
-      {...props}
-    />
+    <a className="text-gray-500 hover:text-gray-900 font-libre" {...props} />
   ),
   ul: (props) => (
     <ul
-      className="list-disc text-gray-800 dark:text-gray-200 mb-4 ml-6 "
+      className="list-disc text-gray-700 dark:text-gray-300 mb-6 ml-10 text-base leading-loose"
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className="list-decimal list-outside text-gray-800 dark:text-gray-200 mb-4 ml-6 text-lg"
+      className="list-decimal text-gray-700 dark:text-gray-300 mb-6 ml-10 text-base leading-loose"
       {...props}
     />
   ),
-  li: (props) => <li className="mb-1 text-lg" {...props} />,
+  li: (props) => (
+    <li
+      className="mb-2 text-gray-700 dark:text-gray-300 text-base leading-loose"
+      {...props}
+    />
+  ),
   blockquote: (props) => (
     <blockquote
       className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 my-4"
@@ -203,7 +300,7 @@ const MarkdownComponents = {
   ),
   hr: (props) => <hr className="  dark:border-gray-700 my-6" {...props} />,
   table: (props) => (
-    <div className="overflow-x-auto my-6">
+    <div className="overflow-x-auto my-6 font-libre">
       <table
         className="min-w-full divide-y divide-gray-300 dark:divide-gray-700"
         {...props}
@@ -211,32 +308,35 @@ const MarkdownComponents = {
     </div>
   ),
   thead: (props) => (
-    <thead className="bg-gray-100 dark:bg-gray-800" {...props} />
+    <thead className="bg-gray-100 dark:bg-gray-800 font-libre" {...props} />
   ),
   tbody: (props) => (
     <tbody
-      className="divide-y divide-gray-200 dark:divide-gray-700"
+      className="divide-y divide-gray-200 dark:divide-gray-700 font-libre"
       {...props}
     />
   ),
   tr: (props) => (
-    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/60" {...props} />
+    <tr
+      className="hover:bg-gray-50 dark:hover:bg-gray-800/60 font-libre"
+      {...props}
+    />
   ),
   th: (props) => (
     <th
-      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
+      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white font-libre"
       {...props}
     />
   ),
   td: (props) => (
     <td
-      className="px-3 py-4 text-sm text-gray-800 dark:text-gray-200"
+      className="px-3 py-4 text-sm text-gray-800 dark:text-gray-200 font-libre"
       {...props}
     />
   ),
   pre: (props) => (
     <pre
-      className="overflow-auto rounded-lg bg-gray-900 dark:bg-black p-4 my-4"
+      className="overflow-auto rounded-lg bg-gray-900 dark:bg-black p-4 my-4 font-libre"
       {...props}
     />
   ),
@@ -263,12 +363,20 @@ const MarkdownComponents = {
     />
   ),
   strong: (props) => (
-    <strong className="font-bold text-gray-900 dark:text-white" {...props} />
+    <strong
+      className="font-bold text-gray-900 dark:text-white font-libre"
+      {...props}
+    />
   ),
   em: (props) => (
-    <em className="italic text-gray-900 dark:text-white" {...props} />
+    <em
+      className="italic text-gray-900 dark:text-white font-libre"
+      {...props}
+    />
   ),
-  del: (props) => <del className="line-through text-gray-500" {...props} />,
+  del: (props) => (
+    <del className="line-through text-gray-500 font-libre" {...props} />
+  ),
 };
 
 export default function Post({ frontmatter, content, slug }) {
