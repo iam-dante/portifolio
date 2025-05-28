@@ -56,11 +56,11 @@ export default function Blog({ posts }) {
   return (
     <BlogLayout meta={{ title: "Blog" }}>
       <div className="">
-        <div className="h-48 flex items-center justify-center">
+        <div className="h-48 flex items-center justify-center font-libre">
           <h1 className="text-black text-4xl font-sans font-semibold">Blog</h1>
         </div>
 
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 font-libre">
           {posts.map((post) => (
             <div
               key={post.slug}
@@ -69,19 +69,19 @@ export default function Blog({ posts }) {
               <h2 className="text-2xl text-white font-semibold mb-3">
                 <Link
                   href={`/posts/${post.slug}`}
-                  className="hover:text-blue-400 transition-colors text-black"
+                  className="hover:text-gray-400 transition-colors text-black font-libre"
                 >
                   {post.title}
                 </Link>
               </h2>
-              <p className="text-gray-900 mb-4">{post.summary}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400 font-jet">
+              <p className="text-gray-900 mb-4 font-libre">{post.summary}</p>
+              <div className="flex items-center justify-between font-libre">
+                <span className="text-sm text-gray-400 font-libre">
                   {post.date}
                 </span>
                 <Link
                   href={`/posts/${post.slug}`}
-                  className="text-blue-400 hover:text-blue-300 text-sm font-medium"
+                  className="text-blue-700 hover:text-blue-300 text-sm font-medium"
                 >
                   Read More →
                 </Link>

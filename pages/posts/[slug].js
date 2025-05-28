@@ -38,7 +38,7 @@ const TableOfContents = ({ headings }) => {
       // Handle empty hash case (just "#")
       if (hash === "") {
         setActiveId("");
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         return true;
       }
       if (hash && headings.some((h) => h.id === hash)) {
@@ -49,9 +49,7 @@ const TableOfContents = ({ headings }) => {
     };
 
     const handleScroll = () => {
-      // Only update based on scroll if no hash is present
       if (checkHash()) return;
-
       const scrollPosition = window.scrollY + 80; // Adjusted offset
       const pageBottom =
         window.innerHeight + window.scrollY >=
