@@ -7,14 +7,14 @@ import Head from "next/head";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-import rehypeRaw from "rehype-raw";
+// import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import remarkEmoji from "remark-emoji";
 import remarkToc from "remark-toc";
 import remarkBreaks from "remark-breaks";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import "highlight.js/styles/github-dark.css";
+// import "highlight.js/styles/github-dark.css";
 // import React from "react";
 
 // Add TableOfContents component
