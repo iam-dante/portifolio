@@ -492,7 +492,7 @@ export default function Post({ frontmatter, content, slug }) {
             remarkBreaks,
           ]}
           rehypePlugins={[
-            rehypeRaw,
+            // rehypeRaw,
             rehypeSlug,
             [rehypeAutolinkHeadings, { behavior: "wrap" }],
             [rehypeHighlight, { ignoreMissing: true }],
