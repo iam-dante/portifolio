@@ -142,7 +142,7 @@ function PostLayout({ children, headings }) {
         <div className="mb-8">
           <Link
             href="/blog"
-            className="text-blue-800 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-sans"
+            className="text-orange-800 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-sans"
           >
             ← Back to Blog
           </Link>
@@ -270,7 +270,7 @@ const MarkdownComponents = {
     />
   ),
   a: (props) => (
-    <a className="text-gray-500 hover:text-gray-900 font-libre" {...props} />
+    <a className="text-orange-500 hover:text-gray-900 font-libre font-thin" {...props} />
   ),
   ul: (props) => (
     <ul

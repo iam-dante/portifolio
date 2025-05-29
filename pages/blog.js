@@ -81,7 +81,7 @@ export default function Blog({ posts }) {
                 </span>
                 <Link
                   href={`/posts/${post.slug}`}
-                  className="text-blue-700 hover:text-blue-300 text-sm font-medium"
+                  className="text-orange-400 hover:text-orange-700 text-sm font-thin"
                 >
                   Read More →
                 </Link>

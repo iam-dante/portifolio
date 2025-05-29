@@ -2,7 +2,7 @@
 title: "Internship Experience at IGS, University of Maryland, Baltimore"
 date: "2025-05-15"
 summary: "During Summer 2024, I completed a data science internship as of Laboratory Assistant  at the Institute for Genome Sciences (IGS) at the University of Maryland, Baltimore. This experience introduced me to the world of computational biology through daily literature reviews, hands-on work with genomic data, and active engagement with high-performance computing tools."
-updated: "2024-05-15"
+updated: "2025-05-15"
 readingTime: 5
 ---
 
