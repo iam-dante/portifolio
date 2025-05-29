@@ -52,7 +52,7 @@ const Home = (): JSX.Element => {
   }
 
   return (
-    <div className={`${enabled ? "" : "dark"} font-poppins`}>
+    <div className={`${enabled ? "" : "dark"}`}>
       <div className="min-h-screen bg-white dark:bg-black">
         <Head>
           <title>Brian Temu | Software & ML Engineer</title>
@@ -88,11 +88,13 @@ const Home = (): JSX.Element => {
             </div>
 
             <div className="md:block hidden">
-              <h1 className="text-lg sm:text-xl font-bold dark:text-white">
-                Brian Temu
-              </h1>
+              <Link href="/">
+                <h1 className="text-lg sm:text-xl font-bold dark:text-white font-sans">
+                  Brian Temu
+                </h1>
+              </Link>
             </div>
-            <div className="flex items-center gap-3 sm:gap-6 text-sm sm:text-base md:text-lg">
+            <div className="flex items-center gap-3 sm:gap-6 text-sm sm:text-base md:text-lg font-sans">
               <button
                 onClick={() => {
                   const element = document.getElementById("about");
@@ -102,6 +104,13 @@ const Home = (): JSX.Element => {
               >
                 About
               </button>
+              <Link
+                href="/blog"
+                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
+              >
+                Blog
+              </Link>
+
               <button
                 onClick={() => {
                   const element = document.getElementById("projects");
@@ -147,10 +156,10 @@ const Home = (): JSX.Element => {
                     </div>
                   </div>
 
-                  <div className="space-y-3 md:space-y-5">
+                  <div className="space-y-3 md:space-y-10">
                     <h1 className="font-bold text-5xl sm:text-3xl md:text-6xl xl:text-7xl dark:text-white">
                       ML & Software
-                      <p className="block text-gradient  text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
+                      <p className="block text-gradient  text-transparent bg-gradient-to-r from-blue-500 to-violet-600">
                         Engineer
                       </p>
                     </h1>

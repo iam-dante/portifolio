@@ -1,10 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+};
 
-// If you have other Next.js configurations, you can pass them as the parameter:
-// module.exports = withNextra({ /* other next.js config */ })
+const withMDX = require("@next/mdx")({
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    providerImportSource: "@mdx-js/react",
+  },
+});
 
-module.exports = nextConfig
+// module.exports = withMDX({
+//   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+// });
+
+module.exports = {
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+};
 
