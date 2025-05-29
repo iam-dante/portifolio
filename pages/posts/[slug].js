@@ -7,7 +7,7 @@ import Head from "next/head";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-// import rehypeRaw from "rehype-raw";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import remarkEmoji from "remark-emoji";
 import remarkToc from "remark-toc";
@@ -492,7 +492,7 @@ export default function Post({ frontmatter, content, slug }) {
             remarkBreaks,
           ]}
           rehypePlugins={[
-            // rehypeRaw,
+            rehypeRaw,
             rehypeSlug,
             [rehypeAutolinkHeadings, { behavior: "wrap" }],
             [rehypeHighlight, { ignoreMissing: true }],
