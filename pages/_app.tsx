@@ -5,8 +5,10 @@ import { Suspense } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
+    // This is a Next.js custom App component that wraps the entire application.
     <>
       <Suspense fallback={<div>Loading...</div>}>
+       
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
