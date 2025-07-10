@@ -89,24 +89,24 @@ const Home = (): JSX.Element => {
 
             <div className="md:block hidden">
               <Link href="/">
-                <h1 className="text-lg sm:text-xl font-bold dark:text-white font-sans">
+                <h1 className="text-lg sm:text-xl font-bold dark:text-white font-libre">
                   Brian Temu
                 </h1>
               </Link>
             </div>
-            <div className="flex items-center gap-3 sm:gap-6 text-sm sm:text-base md:text-lg font-sans">
+            <div className="flex items-center gap-3 sm:gap-6 text-sm sm:text-base md:text-lg font-sans h-16">
               <button
                 onClick={() => {
                   const element = document.getElementById("about");
                   element?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
+                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:border-b-2 hover:border-sky-600 py-2"
               >
                 About
               </button>
               <Link
                 href="/blog"
-                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
+                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:border-b-2 hover:border-sky-600 py-2"
               >
                 Blog
               </Link>
@@ -116,13 +116,13 @@ const Home = (): JSX.Element => {
                   const element = document.getElementById("projects");
                   element?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
+                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:border-b-2 hover:border-sky-600 py-2"
               >
                 Projects
               </button>
               <Link
                 href="https://drive.google.com/file/d/1xB1cX8aRRtSrQwExlasPljDIJqpSBCEM/view?usp=sharing"
-                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
+                className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:border-b-2 hover:border-sky-600  py-2"
                 target="_blank"
               >
                 Resume
