@@ -26,6 +26,7 @@ const config: Config = {
       fira: ["Fira Mono", "monospace"],
       jet: ["JetBrains Mono", "sans-serif"],
       poppins: ["Poppins", "sans-serif"],
+      josefinslab: ["Josefin Slab", "serif"],
     },
     typography: (theme: any) => ({
       DEFAULT: {

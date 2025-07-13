@@ -94,7 +94,7 @@ const Home = (): JSX.Element => {
                 </h1>
               </Link>
             </div>
-            <div className="flex items-center gap-3 sm:gap-6 text-sm sm:text-base md:text-lg font-sans h-16">
+            <div className="flex items-center gap-3 sm:gap-6 text-sm sm:text-base md:text-lg font-libre h-16">
               <button
                 onClick={() => {
                   const element = document.getElementById("about");
@@ -156,14 +156,14 @@ const Home = (): JSX.Element => {
                     </div>
                   </div>
 
-                  <div className="space-y-3 md:space-y-10">
-                    <h1 className="font-bold text-5xl sm:text-3xl md:text-6xl xl:text-7xl dark:text-white">
+                  <div className="space-y-3 md:space-y-4">
+                    <h1 className="text-5xl sm:text-3xl md:text-6xl xl:text-7xl dark:text-white font-libre">
                       ML & Software
-                      <p className="block text-gradient  text-transparent bg-gradient-to-r from-blue-500 to-violet-600">
+                      <p className="block font-josefinslab font-italic text-red-500 font-extrabold">
                         Engineer
                       </p>
                     </h1>
-                    <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+                    <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl font-dsans">
                       As a dedicated software engineer with a strong background
                       in software development and a deep passion for data
                       science, I craft intelligent solutions at the intersection
