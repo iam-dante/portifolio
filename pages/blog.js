@@ -69,12 +69,12 @@ export default function Blog({ posts }) {
               <h2 className="text-2xl text-white font-semibold mb-3">
                 <Link
                   href={`/posts/${post.slug}`}
-                  className="hover:text-gray-400 transition-colors text-black font-libre"
+                  className="hover:text-gray-400 transition-colors text-black font-libre text-lg md:text-xl"
                 >
                   {post.title}
                 </Link>
               </h2>
-              <p className="text-gray-900 mb-4 font-libre">{post.summary}</p>
+              <p className="text-gray-900 mb-4 font-libre text-sm md:text-base">{post.summary}</p>
               <div className="flex items-center justify-between font-libre">
                 <span className="text-sm text-gray-400 font-libre">
                   {post.date}
