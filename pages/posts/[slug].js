@@ -14,7 +14,7 @@ import remarkToc from "remark-toc";
 import remarkBreaks from "remark-breaks";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import "highlight.js/styles/github-dark.css";
+// import "highlight.js/styles/github-dark.css";
 
 // CodeBlock component
 const CodeBlock = ({ children, ...props }) => {
