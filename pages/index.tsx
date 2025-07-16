@@ -159,7 +159,7 @@ const Home = (): JSX.Element => {
                   <div className="space-y-3 md:space-y-4">
                     <h1 className="text-5xl sm:text-3xl md:text-6xl xl:text-7xl dark:text-white font-libre">
                       ML & Software
-                      <p className="block font-josefinslab font-italic text-red-500 font-extrabold">
+                      <p className="block font-josefinslab text-red-500 font-extrabold">
                         Engineer
                       </p>
                     </h1>

@@ -14,8 +14,28 @@ import remarkToc from "remark-toc";
 import remarkBreaks from "remark-breaks";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-// import "highlight.js/styles/github-dark.css";
-// import React from "react";
+import "highlight.js/styles/github-dark.css";
+
+// CodeBlock component
+const CodeBlock = ({ children, ...props }) => {
+  return (
+    <div className="my-6 rounded-lg overflow-hidden shadow-lg">
+      {/* Code block */}
+      <pre
+        className="overflow-x-auto bg-gray-900 dark:bg-black text-gray-100 p-4 font-mono text-sm leading-relaxed border-0 m-0"
+        style={{
+          // Override highlight.js styles
+          background: 'rgb(17 24 39) !important',
+          fontSize: '0.875rem',
+          lineHeight: '1.6',
+        }}
+        {...props}
+      >
+        {children}
+      </pre>
+    </div>
+  );
+};
 
 // Add TableOfContents component
 const TableOfContents = ({ headings }) => {
@@ -142,7 +162,7 @@ function PostLayout({ children, headings }) {
         <div className="mb-8">
           <Link
             href="/blog"
-            className="text-orange-800 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-sans"
+            className="text-red-800 dark:text-red-400 hover:text-red-700 dark:hover:text-orange-300 font-sans"
           >
             ← Back to Blog
           </Link>
@@ -265,12 +285,12 @@ const MarkdownComponents = {
   ),
   p: (props) => (
     <p
-      className="text-gray-800 dark:text-gray-200 mb-4 text-base leading-relaxed font-libre"
+      className="text-gray-800 dark:text-gray-200 mb-4 text-sm leading-relaxed font-libre"
       {...props}
     />
   ),
   a: (props) => (
-    <a className="text-orange-500 hover:text-gray-900 font-libre font-thin" {...props} />
+    <a className="text-red-500 hover:text-gray-900 font-libre font-thin" {...props} target="_blank" />
   ),
   ul: (props) => (
     <ul
@@ -286,7 +306,7 @@ const MarkdownComponents = {
   ),
   li: (props) => (
     <li
-      className="mb-2 text-gray-700 dark:text-gray-300 text-base leading-loose"
+      className="mb-2 text-gray-700 dark:text-gray-300 text-sm leading-loose"
       {...props}
     />
   ),
@@ -332,26 +352,28 @@ const MarkdownComponents = {
       {...props}
     />
   ),
-  pre: (props) => (
-    <pre
-      className="overflow-auto rounded-lg bg-gray-900 dark:bg-black p-4 my-4 font-libre"
-      {...props}
-    />
-  ),
+  pre: (props) => <CodeBlock {...props} />,
   code: ({ node, inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || "");
-    return !inline && match ? (
-      <code className={`${className} block p-0 m-0`} {...props}>
-        {children}
-      </code>
-    ) : (
-      <code
-        className="px-1.5 py-0.5 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-200 font-mono text-sm"
-        {...props}
-      >
-        {children}
-      </code>
-    );
+    
+    if (!inline && match) {
+      // Block code - let the pre component handle styling
+      return (
+        <code className={`${className} text-gray-100`} {...props}>
+          {children}
+        </code>
+      );
+    } else {
+      // Inline code
+      return (
+        <code
+          className="px-2 py-1 rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 font-mono text-sm border border-orange-200 dark:border-orange-800/50"
+          {...props}
+        >
+          {children}
+        </code>
+      );
+    }
   },
   img: (props) => (
     <img
