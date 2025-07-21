@@ -163,11 +163,8 @@ const Home = (): JSX.Element => {
                         Engineer
                       </p>
                     </h1>
-                    <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl font-dsans">
-                      As a dedicated software engineer with a strong background
-                      in software development and a deep passion for data
-                      science, I craft intelligent solutions at the intersection
-                      of both fields.
+                    <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl font-dsans text-justify pr-6">
+                     {"I'm"} a curious Software and Machine Learning Engineer by practice with a strong foundation in development. I love learning new ideas and applying statistical models and ML techniques to build practical, impactful projects.
                     </p>
                   </div>
 
