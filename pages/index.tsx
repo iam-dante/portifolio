@@ -121,7 +121,7 @@ const Home = (): JSX.Element => {
                 Projects
               </button>
               <Link
-                href="https://drive.google.com/file/d/1iIaWRLowxjojHeIOv2_HLmSrbiu5-mlG/view?usp=sharing"
+                href="https://drive.google.com/file/d/12sb_FTAfH130ohzwXYjt_NKuIDu2TRvw/view?usp=sharing"
                 className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:border-b-2 hover:border-sky-600  py-2"
                 target="_blank"
               >

@@ -52,8 +52,3 @@ Everybody journey is different but i think what I have experienced is that the m
 ### More Info
 [How to Read Math in Deep Learning Paper?](https://www.youtube.com/watch?v=YXWxVxQ6AeY)
 [How to Read Deep Learning Paper as a Software Engineer ](https://www.youtube.com/watch?v=nL7lAo95D-o)
-
-
-
-
-
