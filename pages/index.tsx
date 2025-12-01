@@ -350,7 +350,7 @@ const Home = (): JSX.Element => {
                   <div className="h-full px-6 realative py-5">
                     <Link
                       href={
-                        "https://docs.briantemu.dev/docs/category/vision-transfromer-paper-vit"
+                        "https://docs.briantemu.dev/docs/vision-transformer/intro"
                       }
                       target="_blank"
                       className=" absolute bottom-4 right-4"
@@ -510,7 +510,7 @@ const Home = (): JSX.Element => {
                   <div className="h-full px-6 realative py-5">
                     <Link
                       href={
-                        "https://docs.briantemu.dev/docs/category/spot-the-mask"
+                        "https://docs.briantemu.dev/docs/spot-the-mask/intro"
                       }
                       target="_blank"
                       className=" absolute bottom-4 right-4"
