@@ -19,14 +19,13 @@ const config: Config = {
       },
     },
     fontFamily: {
-      //sans: ["Poppins", "sans-serif"],
-      dsans: ["DM Sans", "sans-serif"],
-      libre: ["Libre Baskerville", "serif"],
-      sans: ["Montserrat", "sans-serif"],
-      fira: ["Fira Mono", "monospace"],
-      jet: ["JetBrains Mono", "sans-serif"],
-      poppins: ["Poppins", "sans-serif"],
-      josefinslab: ["Josefin Slab", "serif"],
+      dsans: ["var(--font-dm-sans)", "sans-serif"],
+      libre: ["var(--font-libre-baskerville)", "serif"],
+      sans: ["var(--font-montserrat)", "sans-serif"],
+      fira: ["var(--font-fira-mono)", "monospace"],
+      jet: ["var(--font-jetbrains-mono)", "monospace"],
+      poppins: ["var(--font-poppins)", "sans-serif"],
+      josefinslab: ["var(--font-josefin-slab)", "serif"],
     },
     typography: (theme: any) => ({
       DEFAULT: {
