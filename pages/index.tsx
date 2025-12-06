@@ -6,7 +6,7 @@ import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
 import Link from "next/link";
 import Image from "next/image";
 
-const Home = (): JSX.Element => {
+const Home = (): React.ReactElement => {
   const [enabled, setEnabled] = useState(true);
 
   function ThemeSwitch() {

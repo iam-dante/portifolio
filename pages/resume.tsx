@@ -14,7 +14,7 @@ const ThemeSwitch = dynamic(
   }
 );
 
-const ResumeContent = (): JSX.Element => {
+const ResumeContent = (): React.ReactElement => {
   const [enabled, setEnabled] = useState(true);
 
   return (
