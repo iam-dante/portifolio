@@ -209,16 +209,16 @@ const Home = (): React.ReactElement => {
                 <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
                   <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Color Block */}
-                  <div className="w-full h-12 bg-orange-700"></div>
+                  <div className="w-full h-12 bg-rose-700"></div>
                   <div className="p-8 relative z-10">
                     <h3 className="text-xl sm:text-2xl font-bold mb-4 dark:text-white">
                       Sidees - Student ID on Digital Wallets
                     </h3>
                     <div className="flex items-center gap-4 mb-6">
-                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300">
+                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-rose-100 text-rose-800 dark:bg-orange-900/50 dark:text-orange-300">
                         Application
                       </span>
-                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-ornage-800 dark:bg-orange-900/50 dark:text-orange-300 border-2 border-orange-800">
+                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-ornage-800 dark:bg-orange-900/50 dark:text-rose-300 border-2 border-rose-800">
                         December 2025
                       </span>
                     </div>
@@ -228,7 +228,7 @@ const Home = (): React.ReactElement => {
                         href="https://sidees.briantemu.dev/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline text-orange-600"
+                        className="underline text-rose-600"
                       >
                         Sidees
                       </a>{" "}
