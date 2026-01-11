@@ -1,5 +1,4 @@
 "use client";
-
 import Head from "next/head";
 import React, { useState } from "react";
 import { GithubICon, LinkedInIcon, TwitterIcon } from "../internal/icons";
@@ -164,7 +163,10 @@ const Home = (): React.ReactElement => {
                       </p>
                     </h1>
                     <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl font-dsans text-justify pr-6">
-                     {"I'm"} a curious Software and Machine Learning Engineer by practice with a strong foundation in development. I love learning new ideas and applying statistical models and ML techniques to build practical, impactful projects.
+                      {"I'm"} a curious Software and Machine Learning Engineer
+                      by practice with a strong foundation in development. I
+                      love learning new ideas and applying statistical models
+                      and ML techniques to build practical, impactful projects.
                     </p>
                   </div>
 
@@ -202,6 +204,53 @@ const Home = (): React.ReactElement => {
                 Featured Projects
               </h2>
               <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                {/* Sidees Project */}
+
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* Color Block */}
+                  <div className="w-full h-12 bg-orange-700"></div>
+                  <div className="p-8 relative z-10">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-4 dark:text-white">
+                      Sidees - Student ID on Digital Wallets
+                    </h3>
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300">
+                        Application
+                      </span>
+                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-ornage-800 dark:bg-orange-900/50 dark:text-orange-300 border-2 border-orange-800">
+                        December 2025
+                      </span>
+                    </div>
+
+                    <p className="text-sm sm:text-base text-black dark:text-white">
+                      <a
+                        href="https://sidees.briantemu.dev/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-orange-600"
+                      >
+                        Sidees
+                      </a>{" "}
+                      {`is a prototype exploring the integration of student identification credentials into digital wallets 
+                      (Apple Wallet and Google Wallet) using NFC technology for secure access to campus systems. The primary objective of 
+                      this prototype was to evaluate the feasibility, usability, and system behavior of such an implementation through a pilot-style test case 
+                      modeled on UMBC. To conclude there is futher work to be done and make it adopted national wide.`}
+                    </p>
+                  </div>
+                  <div className="h-full px-6 realative py-5">
+                    <Link
+                      href={"https://eda.briantemu.dev/"}
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+
                 {/* Eda Project */}
 
                 <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
