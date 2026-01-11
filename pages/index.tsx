@@ -240,7 +240,7 @@ const Home = (): React.ReactElement => {
                   </div>
                   <div className="h-full px-6 realative py-5">
                     <Link
-                      href={"https://eda.briantemu.dev/"}
+                      href={"https://sidees.briantemu.dev/"}
                       target="_blank"
                       className=" absolute bottom-4 right-4"
                     >
