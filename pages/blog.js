@@ -57,7 +57,7 @@ export default function Blog({ posts }) {
     <BlogLayout meta={{ title: "Blog" }}>
       <div className="">
         <div className="h-48 flex items-center justify-center font-libre">
-          <h1 className="text-black text-4xl font-sans font-semibold">Blog</h1>
+          <h1 className="text-black text-4xl font-sans font-semibold">Thoughts</h1>
         </div>
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 font-libre">
