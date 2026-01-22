@@ -1,13 +1,13 @@
-// /components/BlogLayout.js
+// /components/thoughtsLayout.js
 import Link from "next/link";
 import Head from "next/head";
 
-export default function BlogLayout({ children, meta }) {
+export default function ThoughtsLayout({ children, meta }) {
   return (
     <div className="h-screen flex flex-col font-sans">
       <Head>
-        <title>{meta?.title ? `${meta.title} | Blog` : "Brian Temu"}</title>
-        <meta name="description" content={meta?.summary || "Brian Temu - blog"} />
+        <title>{meta?.title ? `${meta.title} | thoughts` : "Brian Temu"}</title>
+        <meta name="description" content={meta?.summary || "Brian Temu - thoughts"} />
       </Head>
       <nav className="">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full">

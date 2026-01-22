@@ -33,8 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/BlogLayout.js",
-    "pages/blog.js"
+    "components/ThoughtsLayout.js",
+    "pages/thoughts.js"
   ],
   "exclude": [
     "node_modules"

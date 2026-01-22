@@ -161,10 +161,10 @@ function PostLayout({ children, headings }) {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8">
           <Link
-            href="/blog"
+            href="/thoughts"
             className="text-red-800 dark:text-red-400 hover:text-red-700 dark:hover:text-orange-300 font-sans"
           >
-            ← Back to Blog
+            ← Back to Thoughts
           </Link>
         </div>
         <div className="flex justify-between">
@@ -449,7 +449,7 @@ export default function Post({ frontmatter, content, slug }) {
           }
         />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`/blog/${slug}`} />
+        <meta property="og:url" content={`/thoughts/${slug}`} />
         {frontmatter.image && (
           <meta property="og:image" content={frontmatter.image} />
         )}

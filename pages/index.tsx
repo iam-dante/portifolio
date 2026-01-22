@@ -104,7 +104,7 @@ const Home = (): React.ReactElement => {
                 About
               </button>
               <Link
-                href="/blog"
+                href="/thoughts"
                 className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:border-b-2 hover:border-sky-600 py-2"
               >
                 Thoughts

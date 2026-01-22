@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import matter from "gray-matter";
-import BlogLayout from "../components/BlogLayout";
+import ThoughtsLayout from "../components/ThoughtsLayout";
 
 export async function getStaticProps() {
   // Use a content directory instead of pages directory for markdown files
@@ -52,9 +52,9 @@ export async function getStaticProps() {
   return { props: { posts } };
 }
 
-export default function Blog({ posts }) {
+export default function Thoughts({ posts }) {
   return (
-    <BlogLayout meta={{ title: "Blog" }}>
+    <ThoughtsLayout meta={{ title: "Thoughts" }}>
       <div className="">
         <div className="h-48 flex items-center justify-center font-libre">
           <h1 className="text-black text-4xl font-sans font-semibold">Thoughts</h1>
@@ -91,11 +91,11 @@ export default function Blog({ posts }) {
 
           {posts.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-400">No blog posts found.</p>
+              <p className="text-gray-400">No Thoughts posts found.</p>
             </div>
           )}
         </div>
       </div>
-    </BlogLayout>
+    </ThoughtsLayout>
   );
 }
