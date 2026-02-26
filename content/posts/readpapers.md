@@ -2,6 +2,7 @@
 title: "Building Your Foundation: Why Reading Papers is Essential for Machine Learning Engineers"
 date: "2025-07-14"
 summary: "Most of the ideas comes from reading scientific papers. I will focus more on the machine learning engineering side. But in summary you need to build a habit off reading papers."
+tags: ["Machine learning", "Learning"]
 readingTime: 6
 ---
 
