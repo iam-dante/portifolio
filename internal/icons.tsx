@@ -56,3 +56,21 @@ export const LinkedInIcon = () => {
     </Link>
   );
 };
+
+export const ChessComIcon = () => {
+  return (
+    <Link
+      href="https://www.chess.com/member/bryngspr"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chess.com profile"
+      className="inline-block opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200"
+    >
+      <img
+        src="/icons8-chess-com.svg"
+        alt="Chess.com"
+        className="h-7 w-7"
+      />
+    </Link>
+  );
+};
