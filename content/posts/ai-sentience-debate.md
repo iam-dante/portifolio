@@ -12,7 +12,7 @@ So what is the argument here that we are always fighting?
 
 ---
 
-<h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mt-6 mb-3 pb-2 font-libre">The Debate</h2>
+## The Debate
 
 **Me:** These are just Autoregressive generative statistic models they don't understand anything they are fooling you.
 
@@ -30,7 +30,7 @@ Then we start talk all the process of how they are being made the benefit and li
 
 ---
 
-<h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mt-6 mb-3 pb-2 font-libre">AGI, ASI, and Everything in Between</h2>
+## AGI, ASI, and Everything in Between
 
 The AGI/ ASI/ and everything in between that are talking about is so far away that to be even discussed now. We will know AGI when we achieve for now its just tool that are impressive.
 
@@ -40,7 +40,7 @@ I don't believe in AGI or anything in between, I believe in narrow AGI for speci
 
 ---
 
-<h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mt-6 mb-3 pb-2 font-libre">OpenClaw and the AGI Question</h2>
+## OpenClaw and the AGI Question
 
 With tools like [OpenClaw](https://openclaw.ai), Now the trend focus have shipped to help assistants that can managed your digital work and life. Femi is excited about this and he accepts that this is close to something like AGI. The way it reasons, acts, and uses tools across sessions can feel like a step toward general intelligence. I keep telling him that OpenClaw is just a tool. In the conversation who cares about AGI?
 
@@ -50,6 +50,6 @@ The link to AGI presence or not: impressive orchestration does not mean AGI is p
 
 ---
 
-<h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mt-6 mb-3 pb-2 font-libre">The Human Brain</h2>
+## The Human Brain
 
 Jokes aside just imagine how much information that a human brain process in a millisecond. Vision, Sound, Touch, Emotions, Memory, and the most important the next action in a given environment. And we distill information when we sleep learn and grow. The have been talk about continuos learning and making the llm to learn after training or the new paradigms such as World Models (AI that can understand the world) because this invovles alot of things expectialy the laws of physics. All in all what history have taught me is that with progress things can change and the future is exciting more than ever.

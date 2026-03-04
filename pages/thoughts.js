@@ -5,10 +5,8 @@ import matter from "gray-matter";
 import ThoughtsLayout from "../components/ThoughtsLayout";
 
 export async function getStaticProps() {
-  // Use a content directory instead of pages directory for markdown files
   const postsDirectory = path.join(process.cwd(), "/content/posts");
 
-  // Create the directory if it doesn't exist
   if (!fs.existsSync(postsDirectory)) {
     fs.mkdirSync(postsDirectory, { recursive: true });
   }
@@ -22,10 +20,8 @@ export async function getStaticProps() {
       const filePath = path.join(postsDirectory, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
 
-      // Use gray-matter to parse the post metadata section
       const { data, content } = matter(fileContents);
 
-      // Format date if it exists
       const formattedDate = data.date
         ? new Date(data.date).toLocaleDateString("en-US", {
             year: "numeric",
@@ -36,13 +32,12 @@ export async function getStaticProps() {
 
       return {
         slug,
-        title: data.title || slug, // Use title from frontmatter or fallback to slug
+        title: data.title || slug,
         date: formattedDate || "No date",
-        summary: data.summary || content.trim().substring(0, 150) + "...", // Use summary or first 150 chars
+        summary: data.summary || content.trim().substring(0, 150) + "...",
       };
     });
 
-  // Sort posts by date (newest first)
   posts.sort((a, b) => {
     if (a.date === "No date") return 1;
     if (b.date === "No date") return -1;
@@ -55,46 +50,38 @@ export async function getStaticProps() {
 export default function Thoughts({ posts }) {
   return (
     <ThoughtsLayout meta={{ title: "Thoughts" }}>
-      <div className="">
-        <div className="h-48 flex items-center justify-center font-libre">
-          <h1 className="text-black text-4xl font-sans font-semibold">Thoughts</h1>
-        </div>
+      <header className="text-center mb-16">
+        <h1 className="text-4xl font-medium text-stone-800 font-dsans tracking-tight">
+          Thoughts
+        </h1>
+      </header>
 
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 font-libre">
-          {posts.map((post) => (
-            <div
-              key={post.slug}
-              className="border-b border-gray-800 py-8 font-sans"
-            >
-              <h2 className="text-2xl text-white font-semibold mb-3">
-                <Link
-                  href={`/posts/${post.slug}`}
-                  className="hover:text-gray-400 transition-colors text-black font-libre text-lg md:text-xl"
-                >
-                  {post.title}
-                </Link>
+      <div className="space-y-12">
+        {posts.map((post) => (
+          <Link
+            key={post.slug}
+            href={`/posts/${post.slug}`}
+            className="block text-center no-underline group"
+          >
+            <article>
+              <time className="text-sm text-stone-400 font-dsans">
+                {post.date}
+              </time>
+              <h2 className="mt-2 text-xl font-medium text-stone-700 group-hover:text-stone-900 font-dsans">
+                {post.title}
               </h2>
-              <p className="text-gray-900 mb-4 font-libre text-sm md:text-base">{post.summary}</p>
-              <div className="flex items-center justify-between font-libre">
-                <span className="text-sm text-gray-400 font-libre">
-                  {post.date}
-                </span>
-                <Link
-                  href={`/posts/${post.slug}`}
-                  className="text-red-500 hover:text-red-700 text-sm font-thin"
-                >
-                  Read More →
-                </Link>
-              </div>
-            </div>
-          ))}
+              <p className="mt-3 text-base text-stone-500 font-dsans leading-relaxed line-clamp-2">
+                {post.summary}
+              </p>
+            </article>
+          </Link>
+        ))}
 
-          {posts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-400">No Thoughts posts found.</p>
-            </div>
-          )}
-        </div>
+        {posts.length === 0 && (
+          <p className="text-center text-stone-400 font-dsans text-sm">
+            No thoughts yet.
+          </p>
+        )}
       </div>
     </ThoughtsLayout>
   );

@@ -1,36 +1,31 @@
-// /components/thoughtsLayout.js
 import Link from "next/link";
 import Head from "next/head";
 
 export default function ThoughtsLayout({ children, meta }) {
   return (
-    <div className="h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col bg-white">
       <Head>
-        <title>{meta?.title ? `${meta.title} | thoughts` : "Brian Temu"}</title>
-        <meta name="description" content={meta?.summary || "Brian Temu - thoughts"} />
+        <title>{meta?.title ? `${meta.title} | Thoughts` : "Brian Temu"}</title>
+        <meta name="description" content={meta?.summary || "Brian Temu - Thoughts"} />
       </Head>
-      <nav className="">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <Link href="/" className="text-xl font-bold font-libre">
-                  Brian Temu
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <nav className="absolute top-0 left-0 right-0 flex justify-center pt-8">
+        <Link
+          href="/"
+          className="text-sm text-stone-400 hover:text-stone-600 font-dsans"
+        >
+          Brian Temu
+        </Link>
       </nav>
 
-      <main className="grow">{children}</main>
+      <main className="grow flex justify-center px-6 pt-32 pb-16">
+        <div className="w-full max-w-2xl">{children}</div>
+      </main>
 
-      <footer className="">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <div className="text-center text-gray-400">
-            <p>© {new Date().getFullYear()} Brian Temu. All rights reserved.</p>
-          </div>
-        </div>
+      <footer className="py-6">
+        <p className="text-center text-xs text-stone-300 font-dsans">
+          &copy; {new Date().getFullYear()}
+        </p>
       </footer>
     </div>
   );
