@@ -74,3 +74,21 @@ export const ChessComIcon = () => {
     </Link>
   );
 };
+
+export const ZindiIcon = () => {
+  return (
+    <Link
+      href="https://zindi.africa/users/iam-dante"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Zindi profile"
+      className="inline-block opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200"
+    >
+      <img
+        src="/zindi.png"
+        alt="Zindi"
+        className="h-7 w-7 object-contain"
+      />
+    </Link>
+  );
+};

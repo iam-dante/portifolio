@@ -1,7 +1,13 @@
 "use client";
 import Head from "next/head";
 import React, { useState } from "react";
-import { GithubICon, LinkedInIcon, TwitterIcon, ChessComIcon } from "../internal/icons";
+import {
+  GithubICon,
+  LinkedInIcon,
+  TwitterIcon,
+  ChessComIcon,
+  ZindiIcon,
+} from "../internal/icons";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -178,6 +184,8 @@ const Home = (): React.ReactElement => {
                     <TwitterIcon />
 
                     <ChessComIcon />
+
+                    <ZindiIcon />
                   </div>
                 </div>
 
