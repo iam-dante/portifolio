@@ -280,7 +280,7 @@ const Home = (): React.ReactElement => {
                     <p className="text-sm sm:text-base text-black dark:text-white">
                       {`Placed 2nd out of 180+ participants in the `}
                       <a
-                        href="https://zindi.africa/competitions/barbados-traffic-analysis-challenge/leaderboard"
+                        href="https://zindi.africa/competitions/barbados-traffic-analysis-challenge"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline text-indigo-600"
