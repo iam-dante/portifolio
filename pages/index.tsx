@@ -214,6 +214,103 @@ const Home = (): React.ReactElement => {
                 Featured Projects
               </h2>
               <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                {/* FoodScout Project */}
+
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* Color Block */}
+                  <div className="w-full h-12 bg-emerald-700"></div>
+                  <div className="p-8 relative z-10">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-4 dark:text-white">
+                      FoodScout - Smart Food Discovery
+                    </h3>
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300">
+                        Application
+                      </span>
+                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 border-2 border-emerald-800">
+                        March 2026
+                      </span>
+                    </div>
+
+                    <p className="text-sm sm:text-base text-black dark:text-white">
+                      <a
+                        href="https://foodscout.briantemu.dev/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-emerald-600"
+                      >
+                        FoodScout
+                      </a>{" "}
+                      {`is an agent powered food and travel guide built around an interactive 3D globe. Users can click anywhere on the globe or search for a city to discover local restaurants, signature dishes, and food culture. Once a location is selected, a built-in Food Guide Chat lets you ask questions like "best late-night food spots," "hidden gems under $20," or "best food neighborhood to explore," and the agent responds with short, curated tips on nearby restaurants and deeper dining context.`}
+                    </p>
+                  </div>
+                  <div className="h-full px-6 realative py-5">
+                    <Link
+                      href={"https://foodscout.briantemu.dev/"}
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Barbados Traffic Analysis Challenge */}
+
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* Color Block */}
+                  <div className="w-full h-12 bg-indigo-700"></div>
+                  <div className="p-8 relative z-10">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-4 dark:text-white">
+                      2nd Place Zindi Competition
+                    </h3>
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300">
+                        Machine Learning
+                      </span>
+                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300 border-2 border-indigo-800">
+                        January 2026
+                      </span>
+                    </div>
+
+                    <p className="text-sm sm:text-base text-black dark:text-white">
+                      {`Placed 2nd out of 180+ participants in the `}
+                      <a
+                        href="https://zindi.africa/competitions/barbados-traffic-analysis-challenge/leaderboard"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-indigo-600"
+                      >
+                        Zindi Barbados Traffic Analysis Challenge
+                      </a>
+                      {` ($11,000 USD prize pool). The task was to predict traffic congestion at a Barbados roundabout using four streams of video data. Models had to classify congestion levels at entrance and exit points and forecast conditions five minutes ahead, leveraging computer vision, object tracking, and deep learning with the goal of helping the Ministry of Transport and Works identify root causes of traffic and design interventions to reduce it island-wide. `}
+                      <a
+                        href="https://drive.google.com/file/d/10ep61aWZ5TwuEmWuni3IHe78qZIiKuiZ/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-indigo-600"
+                      >
+                        View Certificate
+                      </a>
+                    </p>
+                  </div>
+                  <div className="h-full px-6 realative py-5">
+                    <Link
+                      href={"https://zindi.africa/competitions/barbados-traffic-analysis-challenge/leaderboard"}
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+
                 {/* Sidees Project */}
 
                 <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
