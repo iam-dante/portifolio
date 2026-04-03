@@ -126,7 +126,7 @@ const Home = (): React.ReactElement => {
                 Projects
               </button>
               <Link
-                href="https://drive.google.com/file/d/1GNIRtsEIIMmRFCVcAsgN5wwHjadqetcO/view?usp=sharing"
+                href="https://drive.google.com/file/d/1K_EUYt16geFc2M9BqjJQOJZrfPfBIu9N/view?usp=sharing"
                 className="text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:border-b-2 hover:border-sky-600  py-2"
                 target="_blank"
               >
