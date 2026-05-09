@@ -214,6 +214,48 @@ const Home = (): React.ReactElement => {
                 Featured Projects
               </h2>
               <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                {/* World Gallery */}
+                <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-br  opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="w-full h-12 bg-amber-700"></div>
+                  <div className="p-8 relative z-10">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-4 dark:text-white">
+                      World Gallery — Paintings
+                    </h3>
+                    <div className="flex items-center gap-4 mb-6 flex-wrap">
+                      <span className=" font-sans  inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-900 dark:bg-amber-900/50 dark:text-amber-200">
+                        Application
+                      </span>
+                      <span className="inline-flex items-center px-3  rounded-full text-sm font-sans  text-amber-900 dark:bg-amber-900/50 dark:text-amber-200 border-2 border-amber-800">
+                        May 2026
+                      </span>
+                    </div>
+
+                    <p className="text-sm sm:text-base text-black dark:text-white">
+                      <a
+                        href="https://worldgallery.space/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-amber-700 dark:text-amber-400"
+                      >
+                        World Gallery
+                      </a>{" "}
+                      {`is an online showcase framed like a classical museum visit featured artists, a calm discover flow, and an intimate sense of journey through standout works. Under the hood I fine-tuned a Stable Diffusion model so generations better matched the gallery aesthetic I wanted: curating training data, iterating on hyperparameters, and debugging when outputs drifted or collapsed. Along the way I spent serious time on inference how sampling steps, guidance, schedulers, and latent-space choices change fidelity, speed, and consistency so the site could pair a polished front end with a pipeline I actually understood end to end.`}
+                    </p>
+                  </div>
+                  <div className="h-full px-6 realative py-5">
+                    <Link
+                      href={"https://worldgallery.space/"}
+                      target="_blank"
+                      className=" absolute bottom-4 right-4"
+                    >
+                      <span className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white cursor-pointer transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+
                 {/* FoodScout Project */}
 
                 <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all">
