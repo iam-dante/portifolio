@@ -181,7 +181,7 @@ const Home = (): React.ReactElement => {
 
                     <LinkedInIcon />
 
-                    <TwitterIcon />
+                    {/* <TwitterIcon /> */}
 
                     <ChessComIcon />
 
