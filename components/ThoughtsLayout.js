@@ -5,8 +5,8 @@ export default function ThoughtsLayout({ children, meta }) {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Head>
-        <title>{meta?.title ? `${meta.title} | Thoughts` : "Brian Temu"}</title>
-        <meta name="description" content={meta?.summary || "Brian Temu - Thoughts"} />
+        <title>{meta?.title ? `${meta.title} | Brian Temu` : "Brian Temu"}</title>
+        <meta name="description" content={meta?.summary || `Brian Temu - ${meta?.title || "Thoughts"}`} />
       </Head>
 
       <nav className="absolute top-0 left-0 right-0 flex justify-center pt-8">
