@@ -1,518 +1,120 @@
-import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Head from "next/head";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
-import remarkEmoji from "remark-emoji";
-import remarkToc from "remark-toc";
-import remarkBreaks from "remark-breaks";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import "highlight.js/styles/github-dark.css";
+import remarkGfm from "remark-gfm";
+import remarkEmoji from "remark-emoji";
+import remarkBreaks from "remark-breaks";
+import "highlight.js/styles/github.css";
+import { Layout } from "../../components/Layout";
 
-// CodeBlock component
-const CodeBlock = ({ children, ...props }) => {
-  return (
-    <div className="my-6 rounded-lg overflow-hidden shadow-lg">
-      {/* Code block */}
-      <pre
-        className="overflow-x-auto bg-gray-900 dark:bg-black text-gray-100 p-4 font-mono text-sm leading-relaxed border-0 m-0"
-        style={{
-          // Override highlight.js styles
-          background: 'rgb(17 24 39) !important',
-          fontSize: '0.875rem',
-          lineHeight: '1.6',
-        }}
-        {...props}
-      >
-        {children}
-      </pre>
-    </div>
-  );
-};
+const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 
-// Add TableOfContents component
-const TableOfContents = ({ headings }) => {
-  const [activeId, setActiveId] = useState("");
-
-  // Add click handler for navigation
-  const handleClick = (e, id) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setActiveId(id);
-      history.pushState(null, null, `#${id}`);
-    }
-  };
-
-  useEffect(() => {
-    const checkHash = () => {
-      const hash = window.location.hash.slice(1);
-      // Handle empty hash case (just "#")
-      if (hash === "") {
-        setActiveId("");
-        // window.scrollTo(0, 0);
-        return true;
-      }
-      if (hash && headings.some((h) => h.id === hash)) {
-        setActiveId(hash);
-        return true;
-      }
-      return false;
-    };
-
-    const handleScroll = () => {
-      if (checkHash()) return;
-      const scrollPosition = window.scrollY + 80; // Adjusted offset
-      const pageBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 100;
-
-      const headingElements = headings
-        .map(({ id }) => {
-          const element = document.getElementById(id);
-          if (element) {
-            return {
-              id,
-              offsetTop: element.offsetTop,
-            };
-          }
-          return null;
-        })
-        .filter(Boolean);
-
-      if (pageBottom) {
-        // If near bottom of page, highlight last heading
-        const lastHeading = headingElements[headingElements.length - 1];
-        setActiveId(lastHeading?.id || "");
-      } else {
-        // Find the current heading
-        const current = headingElements.find((heading, index) => {
-          const nextHeading = headingElements[index + 1];
-          return (
-            heading.offsetTop <= scrollPosition &&
-            (!nextHeading || nextHeading.offsetTop > scrollPosition)
-          );
-        });
-
-        if (current?.id) {
-          setActiveId(current.id);
-          // Update URL hash without scrolling
-          history.replaceState(null, null, `#${current.id}`);
-        }
-      }
-    };
-
-    // Initial checks
-    if (!checkHash()) {
-      handleScroll();
-    }
-
-    window.addEventListener("hashchange", checkHash);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("hashchange", checkHash);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [headings]);
-
-  return (
-    <nav className="hidden lg:block sticky top-8 ml-8 min-w-[250px] max-w-[300px] self-start font-libre">
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-        {/* <h2 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
-          Table of Contents
-        </h2> */}
-        <ul className="space-y-2 text-sm">
-          {headings.map((heading) => (
-            <li
-              key={heading.id}
-              style={{ marginLeft: `${(heading.depth - 1) * 1}rem` }}
-            >
-              <a
-                href={`#${heading.id}`}
-                onClick={(e) => handleClick(e, heading.id)}
-                className={`block transition-all duration-200 no-underline outline-none focus:outline-none focus:ring-0 ${
-                  activeId === heading.id
-                    ? "text-slate-600 dark:text-slate-400 font-medium border-l-2 border-slate-600 dark:border-slate-400 pl-2 -ml-2"
-                    : "text-gray-700 dark:text-gray-400 hover:text-slate-900 dark:hover:text-slate-300"
-                }`}
-              >
-                {heading.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
-  );
-};
-
-// Update PostLayout
-function PostLayout({ children, headings }) {
-  return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 font-libre">
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="mb-8">
-          <Link
-            href="/blog"
-            className="text-red-800 dark:text-red-400 hover:text-red-700 dark:hover:text-orange-300 font-sans"
-          >
-            ← Back to Blog
-          </Link>
-        </div>
-        <div className="flex justify-between">
-          <article className="dark:prose-invert max-w-3xl">{children}</article>
-          {headings.length > 0 && <TableOfContents headings={headings} />}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Get the paths for all markdown files
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), "/content/posts");
-
-  if (!fs.existsSync(postsDirectory)) {
-    fs.mkdirSync(postsDirectory, { recursive: true });
-  }
-
-  const filenames = fs.readdirSync(postsDirectory);
-
-  const paths = filenames
-    .filter((filename) => filename.endsWith(".md"))
-    .map((filename) => ({
-      params: {
-        slug: filename.replace(/\.md$/, ""),
-      },
-    }));
+  const filenames = fs.existsSync(POSTS_DIR) ? fs.readdirSync(POSTS_DIR) : [];
 
   return {
-    paths,
+    paths: filenames
+      .filter((filename) => filename.endsWith(".md"))
+      .map((filename) => ({ params: { slug: filename.replace(/\.md$/, "") } })),
     fallback: false,
   };
 }
 
-// Parse date string safely
-function formatDate(dateString) {
-  if (!dateString) return "No date";
-
-  try {
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) {
-      return "Invalid date";
-    }
-
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch (error) {
-    console.error("Error formatting date:", error);
-    return "Error parsing date";
-  }
+function formatDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
-// Get the content for a specific markdown file
 export async function getStaticProps({ params }) {
-  const { slug } = params;
-  const filePath = path.join(process.cwd(), "/content/posts", `${slug}.md`);
+  const filePath = path.join(POSTS_DIR, `${params.slug}.md`);
+  if (!fs.existsSync(filePath)) return { notFound: true };
 
-  try {
-    if (!fs.existsSync(filePath)) {
-      return {
-        notFound: true,
-      };
-    }
+  const { data, content } = matter(fs.readFileSync(filePath, "utf8"));
 
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContents);
-
-    const formattedDate = formatDate(data.date);
-
-    return {
-      props: {
-        frontmatter: {
-          ...data,
-          title: data.title || slug,
-          date: formattedDate,
-        },
-        content,
-        slug,
+  return {
+    props: {
+      frontmatter: {
+        title: data.title || params.slug,
+        summary: data.blurb || data.summary || null,
+        date: formatDate(data.date),
+        updated: formatDate(data.updated),
+        readingTime: data.readingTime ?? null,
+        tags: data.tags ?? null,
       },
-    };
-  } catch (error) {
-    console.error(`Error processing markdown file ${slug}:`, error);
-    return {
-      notFound: true,
-    };
-  }
+      content,
+    },
+  };
 }
 
-// Component to style the markdown content
-const MarkdownComponents = {
-  h1: (props) => (
-    <h1
-      className="text-3xl font-bold text-black mt-8 mb-4 font-libre"
+const markdownComponents = {
+  // `node` is react-markdown's internal hast node; it must never reach the DOM.
+  a: ({ node, href = "", ...props }) => (
+    <a
+      href={href}
       {...props}
+      {...(/^https?:\/\//.test(href)
+        ? { target: "_blank", rel: "noreferrer" }
+        : {})}
     />
   ),
-  h2: (props) => (
-    <h2
-      className="text-2xl font-bold text-black mt-6 mb-3 pb-2 [&_a]:text-black [&_a]:hover:text-black font-libre "
-      {...props}
-    />
-  ),
-  h3: (props) => (
-    <h3
-      className="text-xl font-bold text-black mt-5 mb-2 font-libre"
-      {...props}
-    />
-  ),
-  h4: (props) => (
-    <h4
-      className="text-md font-bold text-black mt-4 mb-2 font-libre"
-      {...props}
-    />
-  ),
-  p: (props) => (
-    <p
-      className="text-gray-800 dark:text-gray-200 mb-4 text-sm leading-relaxed font-libre"
-      {...props}
-    />
-  ),
-  a: (props) => (
-    <a className="text-red-500 hover:text-gray-900 font-libre font-thin" {...props} target="_blank" />
-  ),
-  ul: (props) => (
-    <ul
-      className="list-disc text-gray-700 dark:text-gray-300 mb-6 ml-10 text-base leading-loose"
-      {...props}
-    />
-  ),
-  ol: (props) => (
-    <ol
-      className="list-decimal text-gray-700 dark:text-gray-300 mb-6 ml-10 text-base leading-loose"
-      {...props}
-    />
-  ),
-  li: (props) => (
-    <li
-      className="mb-2 text-gray-700 dark:text-gray-300 text-sm leading-loose"
-      {...props}
-    />
-  ),
-  blockquote: (props) => (
-    <blockquote
-      className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 my-4"
-      {...props}
-    />
-  ),
-  hr: (props) => <hr className="  dark:border-gray-700 my-6" {...props} />,
-  table: (props) => (
-    <div className="overflow-x-auto my-6 font-libre">
-      <table
-        className="min-w-full divide-y divide-gray-300 dark:divide-gray-700"
-        {...props}
-      />
+  // Not lazy-loaded: these images carry no intrinsic dimensions, so they lay
+  // out at zero height and a lazy image that never intersects never loads.
+  // eslint-disable-next-line @next/next/no-img-element
+  img: ({ node, alt = "", ...props }) => <img alt={alt} {...props} />,
+  // A wide table must scroll inside its own box, never widen the page.
+  table: ({ node, ...props }) => (
+    <div className="-mx-1 my-8 overflow-x-auto px-1">
+      <table {...props} />
     </div>
-  ),
-  thead: (props) => (
-    <thead className="bg-gray-100 dark:bg-gray-800 font-libre" {...props} />
-  ),
-  tbody: (props) => (
-    <tbody
-      className="divide-y divide-gray-200 dark:divide-gray-700 font-libre"
-      {...props}
-    />
-  ),
-  tr: (props) => (
-    <tr
-      className="hover:bg-gray-50 dark:hover:bg-gray-800/60 font-libre"
-      {...props}
-    />
-  ),
-  th: (props) => (
-    <th
-      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white font-libre"
-      {...props}
-    />
-  ),
-  td: (props) => (
-    <td
-      className="px-3 py-4 text-sm text-gray-800 dark:text-gray-200 font-libre"
-      {...props}
-    />
-  ),
-  pre: (props) => <CodeBlock {...props} />,
-  code: ({ node, inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || "");
-    
-    if (!inline && match) {
-      // Block code - let the pre component handle styling
-      return (
-        <code className={`${className} text-gray-100`} {...props}>
-          {children}
-        </code>
-      );
-    } else {
-      // Inline code
-      return (
-        <code
-          className="px-2 py-1 rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 font-mono text-sm border border-orange-200 dark:border-orange-800/50"
-          {...props}
-        >
-          {children}
-        </code>
-      );
-    }
-  },
-  img: (props) => (
-    <img
-      className="max-w-full h-auto my-4 rounded-md"
-      loading="lazy"
-      {...props}
-    />
-  ),
-  strong: (props) => (
-    <strong
-      className="font-bold text-gray-900 dark:text-white font-libre"
-      {...props}
-    />
-  ),
-  em: (props) => (
-    <em
-      className="italic text-gray-900 dark:text-white font-libre"
-      {...props}
-    />
-  ),
-  del: (props) => (
-    <del className="line-through text-gray-500 font-libre" {...props} />
   ),
 };
 
-export default function Post({ frontmatter, content, slug }) {
-  const router = useRouter();
-  const [headings, setHeadings] = useState([]);
-
-  useEffect(() => {
-    const elements = document.querySelectorAll("h1, h2, h3, h4");
-    const headingsList = Array.from(elements).map((heading) => ({
-      id: heading.id,
-      text: heading.textContent,
-      depth: Number(heading.tagName.charAt(1)),
-    }));
-    setHeadings(headingsList);
-  }, [content]);
-
-  if (router.isFallback) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        Loading...
-      </div>
-    );
-  }
-
+export default function Post({ frontmatter, content }) {
   return (
-    <>
-      <Head>
-        <title>{frontmatter.title}</title>
-        <meta
-          name="description"
-          content={
-            frontmatter.summary ||
-            frontmatter.excerpt ||
-            `${frontmatter.title} - Blog post`
-          }
-        />
-        {frontmatter.tags && (
-          <meta name="keywords" content={frontmatter.tags.join(", ")} />
-        )}
-        {frontmatter.author && (
-          <meta name="author" content={frontmatter.author} />
-        )}
-        <meta property="og:title" content={frontmatter.title} />
-        <meta
-          property="og:description"
-          content={
-            frontmatter.summary ||
-            frontmatter.excerpt ||
-            `${frontmatter.title} - Blog post`
-          }
-        />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`/blog/${slug}`} />
-        {frontmatter.image && (
-          <meta property="og:image" content={frontmatter.image} />
-        )}
-      </Head>
+    <Layout title={frontmatter.title} description={frontmatter.summary} wide>
+      <header className="mt-12 text-center">
+        <h1 className="font-serif text-[26px] font-semibold leading-tight text-foreground text-pretty sm:text-[32px]">
+          {frontmatter.title}
+        </h1>
 
-      <PostLayout headings={headings}>
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            {frontmatter.title}
-          </h1>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm leading-6 text-subtle">
+          {frontmatter.date ? <time>{frontmatter.date}</time> : null}
+          {frontmatter.readingTime ? (
+            <span>{frontmatter.readingTime} min read</span>
+          ) : null}
+        </div>
 
-          <div className="flex flex-wrap items-center text-gray-600 dark:text-gray-400 text-sm">
-            <time dateTime={frontmatter.date} className="mr-4">
-              {frontmatter.date}
-            </time>
-
-            {frontmatter.author && (
-              <span className="mr-4">By {frontmatter.author}</span>
-            )}
-
-            {frontmatter.readingTime && (
-              <span className="mr-4">{frontmatter.readingTime} min read</span>
-            )}
+        {frontmatter.tags && frontmatter.tags.length > 0 ? (
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            {frontmatter.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-muted px-3 py-1 text-sm font-medium text-subtle"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
+        ) : null}
+      </header>
 
-          {frontmatter.tags && frontmatter.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {frontmatter.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full px-3 py-1 text-sm"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {frontmatter.image && (
-            <div className="mt-6">
-              <img
-                src={frontmatter.image}
-                alt={frontmatter.imageAlt || frontmatter.title}
-                className="w-full h-auto rounded-xl object-cover"
-                style={{ maxHeight: "400px" }}
-              />
-              {frontmatter.imageCaption && (
-                <p className="text-sm text-center text-gray-500 mt-2">
-                  {frontmatter.imageCaption}
-                </p>
-              )}
-            </div>
-          )}
-        </header>
-
+      <article className="prose-note mt-10">
         <ReactMarkdown
-          components={MarkdownComponents}
-          remarkPlugins={[
-            remarkGfm,
-            remarkEmoji,
-            [remarkToc, { heading: "Table of Contents", tight: true }],
-            remarkBreaks,
-          ]}
+          components={markdownComponents}
+          remarkPlugins={[remarkGfm, remarkEmoji, remarkBreaks]}
           rehypePlugins={[
             rehypeRaw,
             rehypeSlug,
@@ -522,13 +124,22 @@ export default function Post({ frontmatter, content, slug }) {
         >
           {content}
         </ReactMarkdown>
+      </article>
 
-        {frontmatter.updated && (
-          <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 text-sm">
-            Last updated on {formatDate(frontmatter.updated)}
-          </div>
-        )}
-      </PostLayout>
-    </>
+      <p className="mt-12 text-center text-[15px] font-medium leading-6">
+        <Link
+          href="/thoughts"
+          className="text-subtle transition-colors hover:text-foreground"
+        >
+          ← Thoughts
+        </Link>
+      </p>
+
+      {frontmatter.updated ? (
+        <p className="mt-6 text-center text-sm leading-6 text-subtle">
+          Last updated {frontmatter.updated}
+        </p>
+      ) : null}
+    </Layout>
   );
 }

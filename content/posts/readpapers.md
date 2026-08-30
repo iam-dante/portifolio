@@ -46,5 +46,5 @@ Now lets talk about the responsibilty of the titles. Software Engineer, Data Sci
 [!["Dunnning-Kruger Effect"](../blogImages/dunning-kruger.png)]()
 
 ### End of the day
-Reading papers isn't just about staying current—it's about developing the deep understanding that separates good engineers from great ones. Every breakthrough in machine learning started as someone's research paper. By building a habit of reading and implementing papers, you're connecting directly to the source of innovation in our field.
+Reading papers isn't just about staying current, it's about developing the deep understanding that separates good engineers from great ones. Every breakthrough in machine learning started as someone's research paper. By building a habit of reading and implementing papers, you're connecting directly to the source of innovation in our field.
 Everybody journey is different but i think what I have experienced is that the more you read the more you will realize that you know close to nothing unitl you master it. I hope this post will inspire you to start and explore your interests. The only question is: when will you start? Happy Learning!.

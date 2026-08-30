@@ -53,7 +53,7 @@ This hands-on experience gave me a deeper appreciation of how computational tool
 
 ##  Discovering Bioinformatics
 
-Before this internship, bioinformatics was a word I had only heard in passing. Over the summer, it transformed into a field I now genuinely enjoy. I learned how essential it is in processing, analyzing, and interpreting biological data—especially in areas like microbiome research where datasets are massive and complex. This experience was amazing, as I got to see how computational methods can uncover patterns and insights that would be impossible to find through traditional laboratory techniques.
+Before this internship, bioinformatics was a word I had only heard in passing. Over the summer, it transformed into a field I now genuinely enjoy. I learned how essential it is in processing, analyzing, and interpreting biological data, especially in areas like microbiome research where datasets are massive and complex. This experience was amazing, as I got to see how computational methods can uncover patterns and insights that would be impossible to find through traditional laboratory techniques.
 
 
 [!["Me Presenting (Interns Presentation Day)"](../blogImages/mepresenting.jpeg)]()
@@ -77,7 +77,7 @@ Her expertise and patience were invaluable as I navigated this new field.I was s
 
 This internship was truly a turning point in my academic journey and to get experience in this country. I’m incredibly grateful to my supervisor and the entire Institute for Genome Sciences for giving me this opportunity. It has solidified my interest in bioinformatics and inspired me to continue exploring the intersection of biology and data science.
 
-I’m walking away from this experience with new skills, lasting connections, and a strong desire to contribute to the field of genomics. IGS has left a lasting impact on my career trajectory—and for that, I’m sincerely thankful.
+I’m walking away from this experience with new skills, lasting connections, and a strong desire to contribute to the field of genomics. IGS has left a lasting impact on my career trajectory, and for that, I’m sincerely thankful.
 
 ## Summary
 

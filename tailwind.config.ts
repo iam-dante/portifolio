@@ -1,95 +1,54 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
-
+  darkMode: ["selector", '[data-theme="dark"]'],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx, md}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx, md}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx, md}",
-    "./internal/**/*.{js,ts,jsx,tsx,mdx,md}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx,md}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx,md}",
     "./content/**/*.{js,ts,jsx,tsx,mdx,md}",
+    "./lib/**/*.{js,ts}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-    },
     fontFamily: {
-      //sans: ["Poppins", "sans-serif"],
-      dsans: ["DM Sans", "sans-serif"],
-      libre: ["Libre Baskerville", "serif"],
-      sans: ["Montserrat", "sans-serif"],
-      fira: ["Fira Mono", "monospace"],
-      jet: ["JetBrains Mono", "sans-serif"],
-      poppins: ["Poppins", "sans-serif"],
-      josefinslab: ["Josefin Slab", "serif"],
+      sans: [
+        "DM Sans",
+        "ui-sans-serif",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif",
+      ],
+      serif: [
+        "Fraunces",
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        "Times New Roman",
+        "serif",
+      ],
+      mono: [
+        "JetBrains Mono",
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "monospace",
+      ],
     },
-    typography: (theme: any) => ({
-      DEFAULT: {
-        css: {
-          color: theme("colors.gray.300"),
-          a: {
-            color: theme("colors.blue.400"),
-            "&:hover": {
-              color: theme("colors.blue.300"),
-            },
-          },
-          h1: {
-            color: theme("colors.white"),
-          },
-          h2: {
-            color: theme("colors.white"),
-          },
-          h3: {
-            color: theme("colors.white"),
-          },
-          h4: {
-            color: theme("colors.white"),
-          },
-          code: {
-            color: theme("colors.gray.200"),
-            backgroundColor: theme("colors.gray.800"),
-          },
-          "code::before": {
-            content: '""',
-          },
-          "code::after": {
-            content: '""',
-          },
-          blockquote: {
-            color: theme("colors.gray.400"),
-            borderLeftColor: theme("colors.gray.700"),
-          },
-          hr: {
-            borderColor: theme("colors.gray.700"),
-          },
-          ol: {
-            color: theme("colors.gray.300"),
-          },
-          ul: {
-            color: theme("colors.gray.300"),
-          },
-          strong: {
-            color: theme("colors.white"),
-          },
-          thead: {
-            color: theme("colors.white"),
-            borderBottomColor: theme("colors.gray.700"),
-          },
-          tbody: {
-            tr: {
-              borderBottomColor: theme("colors.gray.700"),
-            },
-          },
-        },
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        "muted-foreground": "var(--muted-foreground)",
+        subtle: "var(--subtle)",
+        faint: "var(--faint)",
+        muted: "var(--muted)",
       },
-    }),
+      borderColor: {
+        DEFAULT: "var(--border)",
+      },
+    },
   },
-
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [],
 };
-export default config
+
+export default config;

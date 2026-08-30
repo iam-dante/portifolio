@@ -1,77 +1,236 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,500;0,700;1,100;1,200;1,300;1,800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  @apply transition duration-100;
+:root {
+  color-scheme: light;
+
+  --background: #ffffff;
+  --foreground: #1c1917;
+  --muted-foreground: #292524;
+  --subtle: #78716c;
+  --faint: #a8a29e;
+  --border: #e7e5e4;
+  --muted: #f5f5f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --background: #1c1917;
+    --foreground: #fafaf9;
+    --muted-foreground: #e7e5e4;
+    --subtle: #a8a29e;
+    --faint: #57534e;
+    --border: #44403c;
+    --muted: #292524;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #1c1917;
+  --foreground: #fafaf9;
+  --muted-foreground: #e7e5e4;
+  --subtle: #a8a29e;
+  --faint: #57534e;
+  --border: #44403c;
+  --muted: #292524;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-.text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+body {
+  background-color: var(--background);
+  color: var(--muted-foreground);
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom styles for code blocks */
-pre {
-  @apply rounded-lg p-4 bg-gray-800 overflow-x-auto text-sm mb-6;
+@layer components {
+  /* Full-height column so the footer sits at the bottom of short pages. */
+  .page-shell {
+    @apply flex flex-col;
+    min-height: 100vh;
+  }
+
+  /* The measure of the site: a single 576px column, centred. */
+  .site-container {
+    @apply mx-auto w-full max-w-xl px-6;
+  }
+
+
+  .link-underline {
+    @apply underline decoration-[var(--border)] underline-offset-[3px] transition-colors hover:decoration-[var(--muted-foreground)];
+  }
 }
 
-code {
-  font-family: 'JetBrains Mono', monospace;
+@supports (min-height: 100dvh) {
+  .page-shell {
+    min-height: 100dvh;
+  }
 }
 
-/* Custom scrollbar for code blocks */
-pre::-webkit-scrollbar {
+/* Long-form post styling (prose) */
+.prose-note {
+  @apply text-[18px] leading-[1.8] text-muted-foreground;
+  overflow-wrap: break-word;
+}
+
+.prose-note :where(h1, h2, h3, h4) {
+  @apply font-serif font-semibold text-foreground;
+}
+
+.prose-note h1 {
+  @apply mb-5 mt-12 text-3xl leading-tight sm:text-4xl;
+}
+
+.prose-note h2 {
+  @apply mb-4 mt-10 text-2xl leading-tight sm:text-3xl;
+}
+
+.prose-note h3 {
+  @apply mb-3 mt-8 text-xl leading-snug sm:text-2xl;
+}
+
+.prose-note h4 {
+  @apply mb-2 mt-6 text-lg;
+}
+
+.prose-note p {
+  @apply mb-5;
+}
+
+.prose-note a {
+  @apply text-foreground underline decoration-[var(--faint)] underline-offset-2 transition-colors hover:decoration-[var(--muted-foreground)];
+}
+
+.prose-note h1 a,
+.prose-note h2 a,
+.prose-note h3 a,
+.prose-note h4 a {
+  @apply text-inherit no-underline;
+}
+
+.prose-note ul {
+  @apply mb-6 ml-6 list-disc;
+}
+
+.prose-note ol {
+  @apply mb-6 ml-6 list-decimal;
+}
+
+.prose-note li {
+  @apply mb-3 pl-1;
+}
+
+.prose-note blockquote {
+  @apply my-6 font-serif italic text-subtle;
+}
+
+.prose-note hr {
+  @apply my-10 border-0;
+}
+
+.prose-note img {
+  @apply my-8 h-auto max-w-full rounded-xl shadow-sm;
+}
+
+.prose-note strong {
+  @apply font-semibold text-foreground;
+}
+
+.prose-note em {
+  @apply italic;
+}
+
+.prose-note code {
+  @apply rounded-[4px] bg-muted px-1.5 py-0.5 font-mono text-[15px] text-foreground;
+}
+
+.prose-note pre {
+  @apply my-8 overflow-x-auto rounded-lg border border-[var(--border)] bg-muted p-4 font-mono text-[15px] leading-7 text-foreground;
+}
+
+.prose-note pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.prose-note table {
+  @apply my-8 w-full border-collapse text-left text-[16px];
+}
+
+.prose-note th {
+  @apply border-b border-[var(--border)] py-2 pr-4 font-medium text-foreground;
+}
+
+.prose-note td {
+  @apply border-b border-[var(--border)] py-2 pr-4 align-top;
+}
+
+.prose-note pre::-webkit-scrollbar {
   height: 8px;
-  width: 8px;
 }
 
-pre::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+.prose-note pre::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-[var(--border)];
 }
 
-pre::-webkit-scrollbar-thumb {
-  @apply bg-gray-600 rounded-full;
+*:focus-visible {
+  @apply outline-none ring-1 ring-[var(--muted-foreground)] ring-offset-2 ring-offset-[var(--background)];
 }
 
-pre::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+/* Syntax highlighting for the dark theme (github.css handles light) */
+:root[data-theme="dark"] .hljs,
+:root:not([data-theme="light"]) .hljs {
+  color: #c9d1d9;
 }
 
-/* Style markdown table */
-table {
-  @apply w-full border-collapse my-6;
+:root[data-theme="dark"] .hljs-comment,
+:root[data-theme="dark"] .hljs-quote {
+  color: #8b949e;
 }
 
-table th {
-  @apply bg-gray-800 text-white p-2 text-left border border-gray-700;
+:root[data-theme="dark"] .hljs-keyword,
+:root[data-theme="dark"] .hljs-selector-tag,
+:root[data-theme="dark"] .hljs-literal,
+:root[data-theme="dark"] .hljs-type,
+:root[data-theme="dark"] .hljs-deletion {
+  color: #ff7b72;
 }
 
-table td {
-  @apply p-2 border border-gray-700;
+:root[data-theme="dark"] .hljs-string,
+:root[data-theme="dark"] .hljs-attr,
+:root[data-theme="dark"] .hljs-regexp,
+:root[data-theme="dark"] .hljs-addition {
+  color: #a5d6ff;
 }
 
-/* Links within prose content */
-.prose a {
-  @apply text-blue-400 hover:text-blue-300 transition-colors no-underline;
+:root[data-theme="dark"] .hljs-title,
+:root[data-theme="dark"] .hljs-section,
+:root[data-theme="dark"] .hljs-name {
+  color: #d2a8ff;
 }
 
-/* Focus styles for accessibility */
-a:focus, button:focus {
-  @apply outline-none ring-2 ring-blue-400 ring-opacity-50;
+:root[data-theme="dark"] .hljs-number,
+:root[data-theme="dark"] .hljs-built_in,
+:root[data-theme="dark"] .hljs-variable,
+:root[data-theme="dark"] .hljs-template-variable,
+:root[data-theme="dark"] .hljs-meta {
+  color: #79c0ff;
 }
 
-
+:root[data-theme="dark"] .hljs-symbol,
+:root[data-theme="dark"] .hljs-bullet,
+:root[data-theme="dark"] .hljs-attribute {
+  color: #ffa657;
+}
