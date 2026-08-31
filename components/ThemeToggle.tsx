@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
+function setThemeClass(theme: Theme) {
+  const el = document.documentElement;
+  el.classList.remove("light", "dark");
+  el.classList.add(theme);
+}
+
 function currentTheme(): Theme {
   if (typeof document === "undefined") return "light";
-  return document.documentElement.getAttribute("data-theme") === "dark"
-    ? "dark"
-    : "light";
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
 export function ThemeToggle() {
@@ -25,9 +29,8 @@ export function ThemeToggle() {
       } catch {
         return;
       }
-      const next: Theme = media.matches ? "dark" : "light";
-      document.documentElement.setAttribute("data-theme", next);
-      setTheme(next);
+      setThemeClass(media.matches ? "dark" : "light");
+      setTheme(media.matches ? "dark" : "light");
     };
 
     media.addEventListener("change", onChange);
@@ -36,7 +39,7 @@ export function ThemeToggle() {
 
   function toggle() {
     const next: Theme = currentTheme() === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
+    setThemeClass(next);
     try {
       localStorage.setItem("theme", next);
     } catch {

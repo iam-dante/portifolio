@@ -18,7 +18,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not(.light) {
     color-scheme: dark;
 
     --background: #1c1917;
@@ -31,7 +31,7 @@
   }
 }
 
-:root[data-theme="dark"] {
+:root.dark {
   color-scheme: dark;
 
   --background: #1c1917;
@@ -190,47 +190,92 @@ body {
 }
 
 /* Syntax highlighting for the dark theme (github.css handles light) */
-:root[data-theme="dark"] .hljs,
-:root:not([data-theme="light"]) .hljs {
+:root.dark .hljs {
   color: #c9d1d9;
 }
 
-:root[data-theme="dark"] .hljs-comment,
-:root[data-theme="dark"] .hljs-quote {
+:root.dark .hljs-comment,
+:root.dark .hljs-quote {
   color: #8b949e;
 }
 
-:root[data-theme="dark"] .hljs-keyword,
-:root[data-theme="dark"] .hljs-selector-tag,
-:root[data-theme="dark"] .hljs-literal,
-:root[data-theme="dark"] .hljs-type,
-:root[data-theme="dark"] .hljs-deletion {
+:root.dark .hljs-keyword,
+:root.dark .hljs-selector-tag,
+:root.dark .hljs-literal,
+:root.dark .hljs-type,
+:root.dark .hljs-deletion {
   color: #ff7b72;
 }
 
-:root[data-theme="dark"] .hljs-string,
-:root[data-theme="dark"] .hljs-attr,
-:root[data-theme="dark"] .hljs-regexp,
-:root[data-theme="dark"] .hljs-addition {
+:root.dark .hljs-string,
+:root.dark .hljs-attr,
+:root.dark .hljs-regexp,
+:root.dark .hljs-addition {
   color: #a5d6ff;
 }
 
-:root[data-theme="dark"] .hljs-title,
-:root[data-theme="dark"] .hljs-section,
-:root[data-theme="dark"] .hljs-name {
+:root.dark .hljs-title,
+:root.dark .hljs-section,
+:root.dark .hljs-name {
   color: #d2a8ff;
 }
 
-:root[data-theme="dark"] .hljs-number,
-:root[data-theme="dark"] .hljs-built_in,
-:root[data-theme="dark"] .hljs-variable,
-:root[data-theme="dark"] .hljs-template-variable,
-:root[data-theme="dark"] .hljs-meta {
+:root.dark .hljs-number,
+:root.dark .hljs-built_in,
+:root.dark .hljs-variable,
+:root.dark .hljs-template-variable,
+:root.dark .hljs-meta {
   color: #79c0ff;
 }
 
-:root[data-theme="dark"] .hljs-symbol,
-:root[data-theme="dark"] .hljs-bullet,
-:root[data-theme="dark"] .hljs-attribute {
+:root.dark .hljs-symbol,
+:root.dark .hljs-bullet,
+:root.dark .hljs-attribute {
   color: #ffa657;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .hljs {
+    color: #c9d1d9;
+  }
+
+  :root:not(.light) .hljs-comment,
+  :root:not(.light) .hljs-quote {
+    color: #8b949e;
+  }
+
+  :root:not(.light) .hljs-keyword,
+  :root:not(.light) .hljs-selector-tag,
+  :root:not(.light) .hljs-literal,
+  :root:not(.light) .hljs-type,
+  :root:not(.light) .hljs-deletion {
+    color: #ff7b72;
+  }
+
+  :root:not(.light) .hljs-string,
+  :root:not(.light) .hljs-attr,
+  :root:not(.light) .hljs-regexp,
+  :root:not(.light) .hljs-addition {
+    color: #a5d6ff;
+  }
+
+  :root:not(.light) .hljs-title,
+  :root:not(.light) .hljs-section,
+  :root:not(.light) .hljs-name {
+    color: #d2a8ff;
+  }
+
+  :root:not(.light) .hljs-number,
+  :root:not(.light) .hljs-built_in,
+  :root:not(.light) .hljs-variable,
+  :root:not(.light) .hljs-template-variable,
+  :root:not(.light) .hljs-meta {
+    color: #79c0ff;
+  }
+
+  :root:not(.light) .hljs-symbol,
+  :root:not(.light) .hljs-bullet,
+  :root:not(.light) .hljs-attribute {
+    color: #ffa657;
+  }
 }
