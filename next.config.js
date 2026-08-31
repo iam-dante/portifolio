@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
   async redirects() {
     return [
       { source: "/blog", destination: "/thoughts", permanent: true },
