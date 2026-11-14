@@ -63,11 +63,11 @@ export default function Thoughts({ posts }: { posts: Post[] }) {
             <article key={post.slug} className="mt-10 first:mt-8">
               <Link
                 href={`/posts/${post.slug}`}
-                className="font-serif text-xl font-semibold leading-8 text-foreground underline decoration-transparent underline-offset-[3px] transition-colors hover:decoration-current"
+                className="font-sans text-lg font-semibold leading-7 sm:text-xl sm:leading-8 text-foreground underline decoration-transparent underline-offset-[3px] transition-colors hover:decoration-current"
               >
                 {post.title}
               </Link>
-              <p className="mt-2 line-clamp-2 text-[17px] leading-7 text-muted-foreground text-pretty">
+              <p className="mt-2 line-clamp-2 text-[16px] leading-7 sm:text-[17px] text-muted-foreground text-pretty">
                 {post.summary}
               </p>
               <p className="mt-2 text-sm leading-6 text-subtle">{post.date}</p>

@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 @tailwind base;
@@ -80,26 +79,37 @@ body {
   }
 }
 
+/* One-screen pages: exactly the viewport tall, so nothing scrolls. */
+.page-shell--fit {
+  height: 100vh;
+}
+
+@supports (height: 100dvh) {
+  .page-shell--fit {
+    height: 100dvh;
+  }
+}
+
 /* Long-form post styling (prose) */
 .prose-note {
-  @apply text-[18px] leading-[1.8] text-muted-foreground;
+  @apply text-[17px] leading-[1.75] text-muted-foreground sm:text-[18px] sm:leading-[1.8];
   overflow-wrap: break-word;
 }
 
 .prose-note :where(h1, h2, h3, h4) {
-  @apply font-serif font-semibold text-foreground;
+  @apply font-sans font-semibold text-foreground;
 }
 
 .prose-note h1 {
-  @apply mb-5 mt-12 text-3xl leading-tight sm:text-4xl;
+  @apply mb-5 mt-10 text-2xl leading-tight sm:mt-12 sm:text-4xl;
 }
 
 .prose-note h2 {
-  @apply mb-4 mt-10 text-2xl leading-tight sm:text-3xl;
+  @apply mb-4 mt-9 text-[22px] leading-tight sm:mt-10 sm:text-3xl;
 }
 
 .prose-note h3 {
-  @apply mb-3 mt-8 text-xl leading-snug sm:text-2xl;
+  @apply mb-3 mt-7 text-lg leading-snug sm:mt-8 sm:text-2xl;
 }
 
 .prose-note h4 {
@@ -134,7 +144,7 @@ body {
 }
 
 .prose-note blockquote {
-  @apply my-6 font-serif italic text-subtle;
+  @apply my-6 font-sans italic text-subtle;
 }
 
 .prose-note hr {

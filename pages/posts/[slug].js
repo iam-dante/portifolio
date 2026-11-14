@@ -85,8 +85,8 @@ const markdownComponents = {
 export default function Post({ frontmatter, content }) {
   return (
     <Layout title={frontmatter.title} description={frontmatter.summary} wide>
-      <header className="mt-12 text-center">
-        <h1 className="font-serif text-[26px] font-semibold leading-tight text-foreground text-pretty sm:text-[32px]">
+      <header className="mt-10 text-center sm:mt-12">
+        <h1 className="font-sans text-[24px] font-semibold leading-tight text-foreground text-balance sm:text-[32px]">
           {frontmatter.title}
         </h1>
 

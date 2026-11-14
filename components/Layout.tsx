@@ -10,9 +10,11 @@ type LayoutProps = {
   description?: string;
   /** Widens the column for long-form reading. */
   wide?: boolean;
+  /** Fits the whole page into one screen; main grows to fill the space. */
+  fit?: boolean;
 };
 
-export function Layout({ children, title, description, wide }: LayoutProps) {
+export function Layout({ children, title, description, wide, fit }: LayoutProps) {
   const { pathname } = useRouter();
   const pageTitle = title ? `${title} | ${site.name}` : site.name;
 
@@ -31,22 +33,22 @@ export function Layout({ children, title, description, wide }: LayoutProps) {
         <meta property="og:type" content="website" />
       </Head>
 
-      <div className="page-shell">
+      <div className={`page-shell ${fit ? "page-shell--fit" : ""}`}>
         <div
-          className={`site-container flex-1 pb-16 pt-8 sm:pt-12 ${
-            wide ? "max-w-2xl" : ""
-          }`}
+          className={`site-container flex-1 pt-8 sm:pt-12 ${
+            fit ? "flex flex-col pb-6 sm:pb-8" : "pb-16"
+          } ${wide ? "max-w-2xl" : ""}`}
         >
-          <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+          <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-3 sm:gap-x-6">
             <Link
               href="/"
-              className="whitespace-nowrap font-serif text-lg font-semibold text-foreground transition-colors hover:text-muted-foreground"
+              className="whitespace-nowrap font-sans text-base font-semibold sm:text-lg text-foreground transition-colors hover:text-muted-foreground"
             >
               {site.name}
             </Link>
 
-            <div className="flex items-center gap-4 sm:gap-5">
-              <nav className="flex items-center gap-3.5 text-[15px] font-medium sm:gap-5 sm:text-base">
+            <div className="flex items-center gap-2.5 sm:gap-5">
+              <nav className="flex items-center gap-2.5 text-[14px] font-medium sm:gap-5 sm:text-base">
                 {nav.map((item) => {
                   const active = pathname.startsWith(item.href);
                   return (
@@ -69,12 +71,23 @@ export function Layout({ children, title, description, wide }: LayoutProps) {
             </div>
           </header>
 
-          <main>{children}</main>
+          <main className={fit ? "flex min-h-0 flex-1 flex-col" : undefined}>
+            {children}
+          </main>
         </div>
 
-        <footer className={`site-container pb-10 ${wide ? "max-w-2xl" : ""}`}>
+        <footer
+          className={`site-container ${fit ? "pb-6" : "pb-10"} ${
+            wide ? "max-w-2xl" : ""
+          }`}
+        >
           <div className="flex flex-col items-center gap-3 border-t border-[var(--border)] pt-6 text-sm leading-6 text-subtle">
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+            {/* The one-screen home page already lists these links. */}
+            <div
+              className={`flex-wrap justify-center gap-x-4 gap-y-2 ${
+                fit ? "hidden" : "flex"
+              }`}
+            >
               {[
                 { label: "resume", href: socials.resume },
                 { label: "github", href: socials.github },
@@ -113,8 +126,8 @@ export function PageHeading({
   subtitle: string;
 }) {
   return (
-    <div className="mt-12 sm:mt-16">
-      <h1 className="font-serif text-[26px] font-semibold leading-tight text-foreground sm:text-[28px]">
+    <div className="mt-10 sm:mt-16">
+      <h1 className="font-sans text-[24px] font-semibold leading-tight text-foreground sm:text-[28px]">
         {title}
       </h1>
       <p className="mt-2 text-base leading-7 text-muted-foreground">

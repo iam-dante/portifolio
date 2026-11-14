@@ -14,7 +14,7 @@ function EntryTitle({
   href?: string;
   color?: string;
 }) {
-  const base = `font-serif text-xl font-semibold leading-8 ${
+  const base = `font-sans text-lg font-semibold leading-7 sm:text-xl sm:leading-8 ${
     color ?? "text-foreground"
   }`;
   const className = `${base} underline decoration-transparent underline-offset-[3px] transition-colors hover:decoration-current`;
@@ -42,7 +42,7 @@ export function EntryItem({ entry }: { entry: Entry }) {
   return (
     <article className="mt-10 first:mt-8">
       <EntryTitle title={entry.title} href={entry.href} color={entry.color} />
-      <p className="mt-2 text-[17px] leading-7 text-muted-foreground text-pretty">
+      <p className="mt-2 text-[16px] leading-7 sm:text-[17px] text-muted-foreground text-pretty">
         {entry.description}
       </p>
       {entry.links ? (

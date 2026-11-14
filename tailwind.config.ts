@@ -18,14 +18,6 @@ const config: Config = {
         "Segoe UI",
         "sans-serif",
       ],
-      serif: [
-        "Fraunces",
-        "ui-serif",
-        "Georgia",
-        "Cambria",
-        "Times New Roman",
-        "serif",
-      ],
       mono: [
         "JetBrains Mono",
         "ui-monospace",
