@@ -30,8 +30,7 @@ export const socials = {
   linkedin: "https://www.linkedin.com/in/brian-temu/",
   chess: "https://www.chess.com/member/bryngspr",
   zindi: "https://zindi.africa/users/iam-dante",
-  resume:
-    "https://drive.google.com/file/d/1P5DtEh31sKhBpD8EK9X3qXj7qrN63v_5/view?usp=sharing",
+  resume: "/document/Brian_Temu_Resume.pdf",
 };
 
 export const projects: Entry[] = [
