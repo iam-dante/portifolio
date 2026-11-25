@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { Layout } from "../components/Layout";
+import { PaintingSlideshow } from "../components/PaintingSlideshow";
 import { socials } from "../lib/site";
 
 const contacts = [
@@ -25,27 +25,16 @@ export default function Home() {
         I&apos;m in Colorado, doing a PhD at the University of Colorado Denver.
       </p>
 
-      <figure className="mt-6 flex min-h-[80px] flex-1 sm:mt-8">
-        <div className="relative aspect-square h-full max-h-[528px] max-w-full overflow-hidden rounded-2xl bg-muted shadow-xl">
-          <Image
-            src="/me.jpg"
-            alt="Brian Temu"
-            fill
-            priority
-            sizes="(max-width: 640px) 100vw, 528px"
-            className="object-cover"
-          />
-        </div>
-      </figure>
+      <PaintingSlideshow />
 
-      <p className="mt-8 flex flex-wrap gap-x-4 gap-y-1 text-[15px] sm:gap-x-6 sm:text-[17px] font-medium leading-7">
+      <p className="mt-8 flex flex-nowrap gap-x-3 whitespace-nowrap text-[12px] leading-5 sm:mt-6 sm:gap-x-4 sm:text-[13px]">
         {contacts.map((contact) => (
           <a
             key={contact.label}
             href={contact.href}
             target="_blank"
             rel="noreferrer"
-            className="link-underline text-foreground"
+            className="text-subtle transition-colors hover:text-foreground"
           >
             {contact.label}
           </a>

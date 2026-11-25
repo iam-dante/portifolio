@@ -36,7 +36,7 @@ export function Layout({ children, title, description, wide, fit }: LayoutProps)
       <div className={`page-shell ${fit ? "page-shell--fit" : ""}`}>
         <div
           className={`site-container flex-1 pt-8 sm:pt-12 ${
-            fit ? "flex flex-col pb-6 sm:pb-8" : "pb-16"
+            fit ? "flex flex-col pb-10 sm:pb-8" : "pb-16"
           } ${wide ? "max-w-2xl" : ""}`}
         >
           <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-3 sm:gap-x-6">
@@ -71,7 +71,7 @@ export function Layout({ children, title, description, wide, fit }: LayoutProps)
             </div>
           </header>
 
-          <main className={fit ? "flex min-h-0 flex-1 flex-col" : undefined}>
+          <main className={fit ? "flex flex-col sm:min-h-0 sm:flex-1" : undefined}>
             {children}
           </main>
         </div>
