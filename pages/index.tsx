@@ -15,14 +15,15 @@ export default function Home() {
   return (
     <Layout fit>
       <p className="mt-8 text-[17px] leading-7 text-muted-foreground text-pretty sm:mt-10 sm:text-[19px] sm:leading-8">
-        I&apos;m a curious Software and Machine Learning Engineer by practice
-        with a strong foundation in development. I love learning new ideas and
-        applying statistical models and ML techniques to build practical,
-        impactful projects.
+        I&apos;m an engineer who is curious about how things work. I like
+        taking ideas apart, tinkering with them, and building something new
+        out of the pieces.
       </p>
 
       <p className="mt-5 text-[17px] leading-7 sm:mt-6 sm:text-[19px] sm:leading-8 text-muted-foreground text-pretty">
-        I&apos;m in Colorado, doing a PhD at the University of Colorado Denver.
+        I&apos;m in Colorado, doing a PhD in Computer Science at the University
+        of Colorado Denver. In my free time I study art, watch anime, and
+        wander through paintings like the ones below.
       </p>
 
       <PaintingSlideshow />

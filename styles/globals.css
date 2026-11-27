@@ -79,19 +79,6 @@ body {
   }
 }
 
-/* One-screen pages: exactly the viewport tall on tablet and up, so nothing
-   scrolls. On phones the page scrolls naturally instead of squeezing. */
-@media (min-width: 640px) {
-  .page-shell--fit {
-    height: 100vh;
-  }
-
-  @supports (height: 100dvh) {
-    .page-shell--fit {
-      height: 100dvh;
-    }
-  }
-}
 
 /* Long-form post styling (prose) */
 .prose-note {

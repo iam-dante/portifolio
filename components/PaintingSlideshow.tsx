@@ -4,17 +4,34 @@ type Painting = {
   title: string;
   artist: string;
   year: string;
-  /** Exact file name on Wikimedia Commons (all public domain). */
+  /** Exact file name on Wikimedia Commons, or on English Wikipedia when `wiki` is "en". */
   file: string;
+  /**
+   * "en": the file lives on English Wikipedia as a small fair-use copy
+   * (Basquiat is still under copyright). Shown whole over a blurred backdrop
+   * so the low-res image isn't cropped.
+   */
+  wiki?: "en";
 };
 
+const basquiat = (title: string, year: string, file: string): Painting => ({
+  title,
+  artist: "Jean-Michel Basquiat",
+  year,
+  file,
+  wiki: "en",
+});
+
 const paintings: Painting[] = [
+  basquiat("Untitled (Head)", "1981", "Untitled-Head-Jean-Michel_Basquiat-1981.jpg"),
   {
     title: "The Starry Night",
     artist: "Vincent van Gogh",
     year: "1889",
     file: "Van Gogh - Starry Night - Google Art Project.jpg",
   },
+  basquiat("Hollywood Africans", "1983", "Hollywood-Africans-1983.jpg"),
+  basquiat("Irony of Negro Policeman", "1981", "Basquiat-irony-of-negro-policeman-1981.jpg"),
   {
     title: "The Great Wave off Kanagawa",
     artist: "Katsushika Hokusai",
@@ -22,10 +39,29 @@ const paintings: Painting[] = [
     file: "Tsunami by hokusai 19th century.jpg",
   },
   {
+    title: "The Ambassadors",
+    artist: "Hans Holbein the Younger",
+    year: "1533",
+    file: "Hans Holbein the Younger - The Ambassadors - Google Art Project.jpg",
+  },
+  basquiat("Boy and Dog in a Johnnypump", "1982", "Boy-and-Dog-in-Johnnypump-1982.jpg"),
+  {
     title: "Girl with a Pearl Earring",
     artist: "Johannes Vermeer",
     year: "c. 1665",
     file: "1665 Girl with a Pearl Earring.jpg",
+  },
+  {
+    title: "The Tower of Babel",
+    artist: "Pieter Bruegel the Elder",
+    year: "1563",
+    file: "Pieter Bruegel the Elder - The Tower of Babel (Vienna) - Google Art Project - edited.jpg",
+  },
+  {
+    title: "Plan of Imola",
+    artist: "Leonardo da Vinci",
+    year: "1502",
+    file: "Leonardo da Vinci - Plan of Imola - Google Art Project.jpg",
   },
   {
     title: "Wanderer above the Sea of Fog",
@@ -40,18 +76,6 @@ const paintings: Painting[] = [
     file: "Claude Monet, Impression, soleil levant.jpg",
   },
   {
-    title: "The Milkmaid",
-    artist: "Johannes Vermeer",
-    year: "c. 1658",
-    file: "Johannes Vermeer - Het melkmeisje - Google Art Project.jpg",
-  },
-  {
-    title: "Woman with a Parasol",
-    artist: "Claude Monet",
-    year: "1875",
-    file: "Claude Monet - Woman with a Parasol - Madame Monet and Her Son - Google Art Project.jpg",
-  },
-  {
     title: "The Kiss",
     artist: "Gustav Klimt",
     year: "1908",
@@ -59,10 +83,12 @@ const paintings: Painting[] = [
   },
 ];
 
-const src = (file: string) =>
-  `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(
-    file.replace(/ /g, "_")
-  )}?width=1000`;
+const src = ({ file, wiki }: Painting) => {
+  const name = encodeURIComponent(file.replace(/ /g, "_"));
+  return wiki === "en"
+    ? `https://en.wikipedia.org/wiki/Special:FilePath/${name}`
+    : `https://commons.wikimedia.org/wiki/Special:FilePath/${name}?width=1000`;
+};
 
 const INTERVAL_MS = 6000;
 
@@ -89,27 +115,43 @@ export function PaintingSlideshow() {
 
   return (
     <figure
-      className="mt-6 flex flex-col sm:mt-8 sm:min-h-[120px] sm:flex-1"
+      className="mt-6 sm:mt-8"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
       aria-label="Paintings I love"
     >
-      <div className="sm:flex sm:min-h-0 sm:flex-1">
-        <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-muted shadow-xl sm:aspect-square sm:h-full sm:max-h-[528px] sm:w-auto sm:max-w-full">
+      <div>
+        <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-muted shadow-xl sm:aspect-square">
           {paintings.map((p, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <div
               key={p.file}
-              src={src(p.file)}
-              alt={`${p.title} by ${p.artist}`}
-              loading={i === 0 ? "eager" : "lazy"}
-              decoding="async"
               aria-hidden={i !== index}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                 i === index ? "opacity-100" : "opacity-0"
               }`}
-            />
+            >
+              {p.wiki === "en" && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={src(p)}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl brightness-75"
+                />
+              )}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src(p)}
+                alt={`${p.title} by ${p.artist}`}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className={`absolute inset-0 h-full w-full ${
+                  p.wiki === "en" ? "object-contain p-6 drop-shadow-2xl" : "object-cover"
+                }`}
+              />
+            </div>
           ))}
 
           <button
